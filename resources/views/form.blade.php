@@ -211,13 +211,13 @@ desired effect
         <label>Jenis Surat</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            <input type="radio" class="form-check-input" name="jenissurat" id="optionsRadios1" value="Surat Pelayanan SPs" checked="">
             Surat Pelayanan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="jenissurat" id="optionsRadios2" value="Surat Keperluan Lain">
             Surat Keperluan Lain
             </label>
         </div>
@@ -229,7 +229,7 @@ desired effect
             <option value="1">Kartu Tanda Mahasiswa</option>
             <option value="2">Form Rencana Studi</option>
             <option value="3">Lembar Hasil Studi</option>
-            <option value="4">SK Pembimbingan</option>
+            <option value="4">SK Pembimbingan</option> 
             <option value="5">Surat Keterangan Aktif</option>
             <option value="6">Surat Izin Prapenelitian</option>
             <option value="7">Surat Izin Penelitian</option>
@@ -298,31 +298,31 @@ desired effect
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Surat Pelayanan Lainnya</label>
-        <input type="text" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="suratpelayananlainnya" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Rincian Jenis Surat</label>
-        <input type="text" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="rincianjenissurat" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <label>Tujuan Surat Pelayanan SPs</label>
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">ID_Pelayanan Loket</label>
-        <input type="text" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="idloket" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <fieldset class="form-group">
         <label>Tujuan Surat Keluar</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            <input type="radio" class="form-check-input" name="tujuansuratkeluar" id="optionsRadios1" value="Mahasiswa" checked="">
             Mahasiswa
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="tujuansuratkeluar" id="optionsRadios2" value="Pribadi/Personal">
             Pribadi/Personal
             </label>
         </div>
@@ -332,19 +332,19 @@ desired effect
             <label>Tujuan Surat</label>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                <input type="radio" class="form-check-input" name="tujuansurat" id="optionsRadios1" value="Mahasiswa" checked="">
                 Mahasiswa
                 </label>
                 </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" class="form-check-input" name="tujuansurat" id="optionsRadios2" value="Direktorat/Kantor/Unit">
                 Direktorat/Kantor/Unit
                 </label>
             </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" class="form-check-input" name="tujuansurat" id="optionsRadios3" value="Pribadi/Personal">
                 Pribadi/Personal
                 </label>
             </div>
@@ -353,7 +353,7 @@ desired effect
         <div class="form-group">
         <label>Data Mahasiswa</label>
         <label class="col-form-label" for="inputDefault">NRP</label>
-        <input type="text" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="nrp" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <div class="form-group">
@@ -374,37 +374,37 @@ desired effect
             <option value="13">Ketua Program Studi MB IPB</option>
             <option value="14">Dekan Sekolah Bisnis</option>
             <option value="15">Rektor</option>
-            <option value="10">Wakil Rektor Bidang Pendidikan dan Kemahasiswaan</option>
-            <option value="10">Wakil Rektor Bidang Sumberdaya, Perencanaan dan Keuangan</option>
-            <option value="10">Wakil Rektor Bidang Kerjasama dan Sistem Informasi</option>
-            <option value="10">Wakil Rektor Bidang Inovasi, Bisnis dan Kewirausahaan</option>
-            <option value="10">Sekretaris Institut</option>
-            <option value="10">Kantor Manajemen Mutu dan Audit Internal</option>
-            <option value="10">Biro Komunikasi</option>
-            <option value="10">Biro Legislasi dan Pelayanan Hukum</option>
-            <option value="10">Direktorat Pengembangan Program dan Teknologi Pendidikan</option>
-            <option value="10">Direktorat Perencanaan, Pemonitoran dan Evaluasi</option>
-            <option value="10">Direktorat Kerjasama dan Hubungan Alumni</option>
-            <option value="10">Direktorat Program Internasional</option>
-            <option value="10">Direktorat Bisnis dan Manajemen Aset Komersial</option>
-            <option value="10">Direktorat Inovasi dan Kewirausahaan</option>
-            <option value="10">Program Pendidikan Kompetensi Umum</option>
-            <option value="10">Lembaga Pengembangan Institut</option>
-            <option value="10">Lembaga Penelitian dan Pengabdian Kepada Masyarakat</option>
-            <option value="10">Unit Pelatihan Bahasa</option>
-            <option value="10">Unit Olahraga dan Seni</option>
-            <option value="10">Unit Transportasi Kampus</option>
-            <option value="10">Unit Keamanan Kampus (UKK)</option>
-            <option value="10">Unit Kesehatan</option>
-            <option value="10">Unit Pengadaan</option>
-            <option value="10">Unit Arsip</option>
-            <option value="10">Tujuan Surat Keluar lain</option>
+            <option value="16">Wakil Rektor Bidang Pendidikan dan Kemahasiswaan</option>
+            <option value="17">Wakil Rektor Bidang Sumberdaya, Perencanaan dan Keuangan</option>
+            <option value="18">Wakil Rektor Bidang Kerjasama dan Sistem Informasi</option>
+            <option value="19">Wakil Rektor Bidang Inovasi, Bisnis dan Kewirausahaan</option>
+            <option value="20">Sekretaris Institut</option>
+            <option value="21">Kantor Manajemen Mutu dan Audit Internal</option>
+            <option value="22">Biro Komunikasi</option>
+            <option value="23">Biro Legislasi dan Pelayanan Hukum</option>
+            <option value="24">Direktorat Pengembangan Program dan Teknologi Pendidikan</option>
+            <option value="25">Direktorat Perencanaan, Pemonitoran dan Evaluasi</option>
+            <option value="26">Direktorat Kerjasama dan Hubungan Alumni</option>
+            <option value="27">Direktorat Program Internasional</option>
+            <option value="28">Direktorat Bisnis dan Manajemen Aset Komersial</option>
+            <option value="29">Direktorat Inovasi dan Kewirausahaan</option>
+            <option value="30">Program Pendidikan Kompetensi Umum</option>
+            <option value="31">Lembaga Pengembangan Institut</option>
+            <option value="32">Lembaga Penelitian dan Pengabdian Kepada Masyarakat</option>
+            <option value="33">Unit Pelatihan Bahasa</option>
+            <option value="34">Unit Olahraga dan Seni</option>
+            <option value="35">Unit Transportasi Kampus</option>
+            <option value="36">Unit Keamanan Kampus (UKK)</option>
+            <option value="37">Unit Kesehatan</option>
+            <option value="38">Unit Pengadaan</option>
+            <option value="39">Unit Arsip</option>
+            <option value="40">Tujuan Surat Keluar lain</option>
         </select>
         </div>
 
         <div class="form-group">
         <label for="exampleSelect2">Kode Surat</label>
-        <select id="tags-select" name="tags-select">
+        <select id="tags-select" name="Kode Surat">
             <option value="1">AK - Data dan Informasi Akademik</option>
             <option value="2">DL - Pendidikan dan Pelatihan</option>
             <option value="3">DT - Tata Pamong Perguruan Tinggi</option>
@@ -420,59 +420,59 @@ desired effect
             <option value="13">PN - Penelitian</option>
             <option value="14">PP - Pendidikan dan Pengajaran</option>
             <option value="15">RT - Kerumahtanggaan</option>
-            <option value="10">TI - Informasi/SIM/TIK</option>
-            <option value="10">TU - Ketatausahaan</option>
-            <option value="10">WS - Pengawasan</option>
-            <option value="10">PR - Perencanaan</option>
+            <option value="16">TI - Informasi/SIM/TIK</option>
+            <option value="17">TU - Ketatausahaan</option>
+            <option value="18">WS - Pengawasan</option>
+            <option value="19">PR - Perencanaan</option>
         </select>
         </div>
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Tujuan Surat Keluar Lainnya</label>
-        <input type="text" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="tujuansuratkeluarlainnya" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <fieldset class="form-group">
         <label>Pengirim Surat Keluar</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios1" value="Dekan SPs" checked="">
             Dekan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="wAKIL Dekan SPs">
             Wakil Dekan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Sekretaris Program Doktor (S3)">
             Sekretaris Program Doktor (S3)
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Sekretaris Program Magister (S2)">
             Sekretaris Program Magister (S2)
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Kepala Tata Usaha SPs">
             Kepala Tata Usaha SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Pimpinan Sidang Promosi Terbuka S3">
             Pimpinan Sidang Promosi Terbuka S3
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Pengirim Lainnya">
             Pengirim Lainnya
             </label>
         </div>
@@ -480,7 +480,7 @@ desired effect
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Keterangan Pengirim Surat Keluar</label>
-        <input type="text" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="Keterangan Pengirim Surat Keluar" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <div class="form-group">
