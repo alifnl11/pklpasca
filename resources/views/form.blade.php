@@ -205,19 +205,34 @@ desired effect
 
     <section class="content">
     <div class="container">
-    <form>
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+        @foreach($errors-> all as $error)
+            <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+    @endif
+    @if(\Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ \Session::get('success') }}</p>
+    </div>
+    @endif
+    <form method="post" action="{{ url('arsip') }}" >
+    {{csrf_field()}}
     <fieldset>
         <fieldset class="form-group">
         <label>Jenis Surat</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="jenissurat" id="optionsRadios1" value="Surat Pelayanan SPs" checked="">
+            <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios1" value="Surat Pelayanan SPs" checked="">
             Surat Pelayanan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="jenissurat" id="optionsRadios2" value="Surat Keperluan Lain">
+            <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios2" value="Surat Keperluan Lain">
             Surat Keperluan Lain
             </label>
         </div>
@@ -225,7 +240,7 @@ desired effect
 
         <div class="form-group">
         <label for="exampleSelect2">Surat Pelayanan SPs</label>
-        <select id="tags-select" name="tags-select">
+        <select id="tags-select" name="surat_pelayanan_sps">
             <option value="1">Kartu Tanda Mahasiswa</option>
             <option value="2">Form Rencana Studi</option>
             <option value="3">Lembar Hasil Studi</option>
@@ -298,31 +313,31 @@ desired effect
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Surat Pelayanan Lainnya</label>
-        <input type="text" name="suratpelayananlainnya" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="surat_pelayanan_lainnya" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Rincian Jenis Surat</label>
-        <input type="text" name="rincianjenissurat" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="rincian_jenis_surat" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <label>Tujuan Surat Pelayanan SPs</label>
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">ID_Pelayanan Loket</label>
-        <input type="text" name="idloket" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="id_loket" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <fieldset class="form-group">
         <label>Tujuan Surat Keluar</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="tujuansuratkeluar" id="optionsRadios1" value="Mahasiswa" checked="">
+            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="optionsRadios1" value="Mahasiswa" checked="">
             Mahasiswa
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="tujuansuratkeluar" id="optionsRadios2" value="Pribadi/Personal">
+            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="optionsRadios2" value="Pribadi/Personal">
             Pribadi/Personal
             </label>
         </div>
@@ -332,19 +347,19 @@ desired effect
             <label>Tujuan Surat</label>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="tujuansurat" id="optionsRadios1" value="Mahasiswa" checked="">
+                <input type="radio" class="form-check-input" name="tujuan_surat" id="optionsRadios1" value="Mahasiswa" checked="">
                 Mahasiswa
                 </label>
                 </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="tujuansurat" id="optionsRadios2" value="Direktorat/Kantor/Unit">
+                <input type="radio" class="form-check-input" name="tujuan_surat" id="optionsRadios2" value="Direktorat/Kantor/Unit">
                 Direktorat/Kantor/Unit
                 </label>
             </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="tujuansurat" id="optionsRadios3" value="Pribadi/Personal">
+                <input type="radio" class="form-check-input" name="tujuan_surat" id="optionsRadios3" value="Pribadi/Personal">
                 Pribadi/Personal
                 </label>
             </div>
@@ -358,7 +373,7 @@ desired effect
 
         <div class="form-group">
         <label for="exampleSelect2">Rincian Tujuan Surat Keluar</label>
-        <select id="tags-select" name="tags-select">
+        <select id="tags-select" name="rincian_tujuan_surat">
             <option value="1">Mahasiswa yang Bersangkutan</option>
             <option value="2">Komisi Penguji</option>
             <option value="3">Komisi Pembimbing</option>
@@ -404,7 +419,7 @@ desired effect
 
         <div class="form-group">
         <label for="exampleSelect2">Kode Surat</label>
-        <select id="tags-select" name="Kode Surat">
+        <select id="tags-select" name="kode_surat">
             <option value="1">AK - Data dan Informasi Akademik</option>
             <option value="2">DL - Pendidikan dan Pelatihan</option>
             <option value="3">DT - Tata Pamong Perguruan Tinggi</option>
@@ -429,50 +444,50 @@ desired effect
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Tujuan Surat Keluar Lainnya</label>
-        <input type="text" name="tujuansuratkeluarlainnya" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="tujuan_surat_keluar_lainnya" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <fieldset class="form-group">
         <label>Pengirim Surat Keluar</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios1" value="Dekan SPs" checked="">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios1" value="Dekan SPs" checked="">
             Dekan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="wAKIL Dekan SPs">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="wAKIL Dekan SPs">
             Wakil Dekan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Sekretaris Program Doktor (S3)">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Sekretaris Program Doktor (S3)">
             Sekretaris Program Doktor (S3)
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Sekretaris Program Magister (S2)">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Sekretaris Program Magister (S2)">
             Sekretaris Program Magister (S2)
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Kepala Tata Usaha SPs">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Kepala Tata Usaha SPs">
             Kepala Tata Usaha SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Pimpinan Sidang Promosi Terbuka S3">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Pimpinan Sidang Promosi Terbuka S3">
             Pimpinan Sidang Promosi Terbuka S3
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirimSuratKeluar" id="optionsRadios2" value="Pengirim Lainnya">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Pengirim Lainnya">
             Pengirim Lainnya
             </label>
         </div>
@@ -480,7 +495,7 @@ desired effect
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Keterangan Pengirim Surat Keluar</label>
-        <input type="text" name="Keterangan Pengirim Surat Keluar" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="keterangan_pengirim_surat_keluar" class="form-control" placeholder="" id="inputDefault">
         </div>
 
         <div class="form-group">
