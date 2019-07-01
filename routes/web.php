@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('adminttd', function () {
-    return view('adminttdpimpinan');
+    return view('adminTTDpimpinan');
 });
 Route::get('/form', function () {
     return view('form');
