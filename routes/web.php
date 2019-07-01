@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('admin');
 });
+
+Route::get('adminttd', function () {
+    return view('adminttdpimpinan');
+});
