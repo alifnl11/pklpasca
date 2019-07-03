@@ -18,8 +18,7 @@ Route::get('/', function () {
 Route::get('adminttd', function () {
     return view('adminTTDpimpinan');
 });
-Route::get('/form', function () {
-    return view('form');
-});
 
-Route::resource('arsip', 'ArsipController');
+Route::get('arsip', 'ArsipController@create');
+
+Route::post('arsip/store', 'ArsipController@store');

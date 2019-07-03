@@ -24,7 +24,7 @@ class ArsipController extends Controller
      */
     public function create()
     {
-        return view('arsip.form'); //
+        return view('form'); //
     }
 
     /**
@@ -66,7 +66,7 @@ class ArsipController extends Controller
         'keterangan_pengirim_surat_keluar' => $request->get('keterangan_pengirim_surat_keluar')
        ]);
        $arsip-> save();
-       return redirect()->route('arsip.form')->with('success','Data Added');
+       return redirect()->route('arsip')->with('success','Data Added');
 
     }
 
