@@ -19,6 +19,6 @@ Route::get('adminttd', function () {
     return view('adminTTDpimpinan');
 });
 
-Route::get('arsip', 'ArsipController@create');
+Route::get('arsip', 'ArsipController@create')->name('arsip');
 
 Route::post('arsip/store', 'ArsipController@store');

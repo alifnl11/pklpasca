@@ -180,9 +180,8 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>General Elements</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i> Editors</a></li>
+            <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
+            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Arsip </a></li>
           </ul>
         </li>
       </ul>
