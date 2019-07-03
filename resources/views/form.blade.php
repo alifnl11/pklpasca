@@ -500,7 +500,7 @@ desired effect
 
         <div class="form-group">
         <label for="exampleInputFile">Unggah Berkas Surat</label>
-        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="file">
         </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>
