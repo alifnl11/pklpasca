@@ -22,7 +22,7 @@ Route::get('adminloket', function () {
 Route::get('adminttd', function () {
     return view('adminTTDpimpinan');
 });
-<<<<<<< HEAD
+
 
 Route::get('adminpermohonansurat', function () {
     return view('adminPermohonanSurat');
@@ -31,8 +31,6 @@ Route::get('adminpermohonansurat', function () {
 Route::get('/form', function () {
     return view('form');
 });
-=======
->>>>>>> c1aba498634a802e8d62a4a93643e2c69feccc03
 
 Route::get('arsip', 'ArsipController@create')->name('arsip');
 
