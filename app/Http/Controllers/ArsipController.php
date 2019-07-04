@@ -24,7 +24,7 @@ class ArsipController extends Controller
      */
     public function create()
     {
-        return view('arsip.form'); //
+        return view('form'); //
     }
 
     /**
@@ -48,7 +48,8 @@ class ArsipController extends Controller
         'kode_surat'                       => 'required',
         'tujuan_surat_keluar_lainnya'      => 'required',
         'pengirim_Surat_Keluar'            => 'required',
-        'keterangan_pengirim_surat_keluar' => 'required'
+        'keterangan_pengirim_surat_keluar' => 'required',
+        'file'                             => 'required'
        ]); //
        $arsip = new Arsip([
         'jenis_surat'                      => $request->get('jenis_surat'),
@@ -63,10 +64,11 @@ class ArsipController extends Controller
         'kode_surat'                       => $request->get('kode_surat'),
         'tujuan_surat_keluar_lainnya'      => $request->get('tujuan_surat_keluar_lainnya'),
         'pengirim_Surat_Keluar'            => $request->get('pengirim_Surat_Keluar'),
-        'keterangan_pengirim_surat_keluar' => $request->get('keterangan_pengirim_surat_keluar')
+        'keterangan_pengirim_surat_keluar' => $request->get('keterangan_pengirim_surat_keluar'), 
+        'file'                             => $request->get('file')
        ]);
        $arsip-> save();
-       return redirect()->route('arsip.form')->with('success','Data Added');
+       return redirect()->route('arsip')->with('success','Data Added');
 
     }
 
