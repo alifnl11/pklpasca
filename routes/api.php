@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('mahasiswa','MahasiswaController@index');
+Route::post('mahasiswa','MahasiswaController@create');
+Route::get('/mahasiswa/{id}','MahasiswaController@show');
+Route::put('/mahasiswa/{id}','MahasiswaController@update');
+Route::delete('/mahasiswa/{id}','MahasiswaController@delete');
+
+Route::get('/v1/mahasiswa','MahasiswaGuzzleController@getRemoteData');
