@@ -15,9 +15,18 @@ Route::get('/', function () {
     return view('admin');
 });
 
+Route::get('adminloket', function () {
+    return view('admin');
+});
+
 Route::get('adminttd', function () {
     return view('adminTTDpimpinan');
 });
+
+Route::get('adminpermohonansurat', function () {
+    return view('adminPermohonanSurat');
+});
+
 Route::get('/form', function () {
     return view('form');
 });

@@ -167,9 +167,9 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
+            <li><a href="adminloket"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
             <li><a href="adminttd"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
-            <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
+            <li><a href="adminpermohonansurat"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -183,6 +183,18 @@ desired effect
             <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>General Elements</a></li>
             <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Advanced Elements</a></li>
             <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i> Editors</a></li>
+          </ul>
+
+          <li class="treeview">
+          <a href="#">
+          <i class="fas fa-history"></i> <span>&nbsp Histori</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengajuan</a></li>
+            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengambilan</a></li>
           </ul>
         </li>
       </ul>
@@ -220,7 +232,7 @@ desired effect
                 <tr role="row">
                 <th style="width: 5px; text-align:center;" aria-sort="ascending">No</th>
                 <th style="width: 100px;">ID Pengajuan</th>
-                <th style="width: 154px;">Nama Pengaju</th>
+                <th style="width: 154px;">NRP</th>
                 <th style="width: 100px;">Jenis Surat</th>
                 <th style="width: 65px;">Status</th></tr>
                 </thead>
