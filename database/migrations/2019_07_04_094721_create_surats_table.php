@@ -13,18 +13,12 @@ class CreateSuratsTable extends Migration
      */
     public function up()
     {
-        Schema::create('surat', function (Blueprint $table) {
+        Schema::create('surats', function (Blueprint $table) {
             $table->bigIncrements('id_surat');
-            $table->string('nrp');
-            $table->date('estimasi');
-            $table->string('status');
-            $table->string('jenis_surat');
+            $table->string('nama_surat');
+            $table->integer('waktu');
+            $table->string('syarat')->nullable();
         });
-
-        Artisan::call('db:seed', [
-            '--class' => SuratSeeder::class
-        ]);
-
     }
 
     /**
@@ -34,6 +28,6 @@ class CreateSuratsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat');
+        Schema::dropIfExists('surats');
     }
 }

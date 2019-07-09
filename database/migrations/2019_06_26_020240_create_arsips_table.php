@@ -28,6 +28,7 @@ class CreateArsipsTable extends Migration
             $table->string('tujuan_surat_keluar_lainnya');
             $table->string('pengirim_Surat_Keluar');
             $table->string('keterangan_pengirim_surat_keluar');
+            $table->binary('file');
             $table->timestamps();
         });
     }

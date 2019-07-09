@@ -12,4 +12,6 @@ class Mahasiswa extends Model
         'mayor',
         'prodi'
     ];
+
+    public $timestamps = false;
 }
