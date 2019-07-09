@@ -229,39 +229,30 @@ desired effect
             <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
                 <thead>
                 <tr role="row">
-                <th style="width: 5px; text-align:center;" aria-sort="ascending">No</th>
-                <th style="width: 100px;">ID Pengajuan</th>
-                <th style="width: 154px;">NRP</th>
+                <th style="width: 5px; text-align:center;" aria-sort="ascending">ID</th>
+                <th style="width: 100px;">NRP</th>
+                <th style="width: 154px;">Estimasi</th>
                 <th style="width: 100px;">Jenis Surat</th>
                 <th style="width: 65px;">Status</th></tr>
                 </thead>
                 <tbody>
                             
                             
-                            
-                        <tr role="row" class="odd">
-                    <td style="text-align:center;">1</td>
-                    <td>vd</td>
-                    <td>xvc@fds.co</td>
-                    <td>324234234</td>
-                    <td><span class="btn btn-primary btn-flat btn-xs">Active<span></span></span></td>
-                    
-                </tr><tr role="row" class="even">
-                    <td style="text-align:center;">2</td>
-                    <td>Baso</td>
-                    <td>ivanbaso@yahoo.com</td>
-                    <td>085216492548</td>
-                    <td><span class="btn btn-primary btn-flat btn-xs">Active<span></span></span></td>
-                </tr><tr role="row" class="odd">
-                    <td style="text-align:center;">3</td>
-                    <td>sdfsdfsdfdfs</td>
-                    <td>sdfsdfsdf@sdfgsd.jdfg</td>
-                    <td>45353453543</td>
-                    <td><a class="btn btn-info btn-flat btn-xs">Edit</a>
-                        <a class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+                    @foreach($index as $surat)       
+                    <tr role="row" class="odd">
+                    <td style="text-align:center;">{{  $surat->id_surat}}</td>
+                    <td>{{ $surat->nrp}}</td>
+                    <td>{{ $surat->estimasi}}</td>
+                    <td>{{ $surat->jenis_surat}}</td>
+                    <td>
+                    <span class="btn btn-danger btn-flat btn-xs">Batal</span>
+                    <span class="btn btn-primary btn-flat btn-xs">Proses</span>
+                    <span class="btn btn-success btn-flat btn-xs">Selesai</span>
                     </td>
+                    </tr>
+                    @endforeach
                   
-                </tr></tbody>
+                </tbody>
             
             </table></div></div>
               <div class="row">
