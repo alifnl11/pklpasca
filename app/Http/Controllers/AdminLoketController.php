@@ -8,7 +8,7 @@ use App\Surat;
 class AdminLoketController extends Controller
 {
     public function index() {
-        $index = Surat::all();
+        $index = Surat::paginate(3);
         return view('admin',['index' => $index]);
     }
 }
