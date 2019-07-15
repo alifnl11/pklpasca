@@ -7,20 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Proses extends Model
 {
     protected $fillable = [
+        'id_proses',
         'nrp',
         'id_surat',
-        'nama_surat',
         'estimasi',
         'status',
         'jenis_surat'
     ];
 
-    public function admin(){
-        return $this->belongsTo(Proses::class);
-    }
-
     public function surat(){
-        return $this->hasMany(Surat::class,'id_surat','id_surat');
+        return $this->hasOne(Surat::class,'id_surat');
     }
 }
 

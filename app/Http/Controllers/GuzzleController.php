@@ -7,7 +7,6 @@ use GuzzleHttp\Client;
 use function GuzzleHttp\json_decode;
 use App\Surat;
 use App\Proses;
-use Carbon\Carbon;
 
 class GuzzleController extends Controller
 {
@@ -21,9 +20,8 @@ class GuzzleController extends Controller
         foreach($data as $row){
             $surat = new Surat();
             $surat->id_surat = $row["id_pengajuan"];
-            $surat->nama_surat = $row["nama_surat"];
+            $surat->jenis_surat = $row["nama_surat"];
             $surat->waktu = $row["waktu"];
-            $surat->syarat = $row["syarat"];
             $surat->save();    
         }
         return "Data Berhasil Masuk";
@@ -38,29 +36,29 @@ class GuzzleController extends Controller
         
         foreach($data as $rows){
             $proses = new Proses();
-            if(is_int($rows["id_proses"]))
-            $proses->id_proses = $rows["id_proses"];
-            else 
+            if($rows["id_proses"] == '')
             $proses->id_proses = null;
+            else 
+            $proses->id_proses = $rows["id_proses"];
+            if(Proses::where('id_proses', $proses->id_proses))
+            break;
+            else{
             $proses->nrp = $rows["nrp"];
+            if($rows["id_pengajuan"] == '0'|| $rows["id_pengajuan"] > 20)
+            $proses->id_surat = null;
+            else
             $proses->id_surat = $rows["id_pengajuan"];
+            if($rows["estimasi"] == 0)
             $proses->estimasi = null;
-            $proses->jenis_surat = null;
-            
+            else
+            $proses->estimasi = $rows["estimasi"]; 
             $terms = $proses->id_surat;
-            $nama_surat = Surat::where('id_surat', $terms)->select(array('nama_surat','waktu'))->get();
-            
-            foreach($nama_surat as $row){
-                $hasil = $proses;
-                $hasil->jenis_surat = $row["nama_surat"];
-                $today = $rows["tanggal_pengajuan"];
-                $daystosum = $row["waktu"];
-                $estimasi = date('d-m-Y', strtotime($today.' + '.$daystosum.' days'));
-                $hasil->estimasi = $estimasi;
-                $hasil->save();    
-            }    
-            $proses->save();    
-        } 
+            $nama_surat = Surat::where('id_surat', $terms)->value('jenis_surat');
+            $proses->jenis_surat = $nama_surat;
+            $proses->save();
+            }
+        };
         return "Data Berhasil Masuk";
     }
 }
+
