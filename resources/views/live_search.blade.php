@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-
+ 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -29,9 +29,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <script src="https://kit.fontawesome.com/88912c150c.js"></script>
+  
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -167,9 +175,9 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="adminloket"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
-            <li><a href="adminttd"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
-            <li><a href="adminpermohonansurat"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
+            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
+            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
+            <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -181,19 +189,8 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Arsip </a></li>
-          </ul>
-
-          <li class="treeview">
-          <a href="#">
-          <i class="fas fa-history"></i> <span>&nbsp Histori</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengajuan</a></li>
-            <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengambilan</a></li>
+            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Advanced Elements</a></li>
+            <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i> Editors</a></li>
           </ul>
         </li>
       </ul>
@@ -207,7 +204,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Pengajuan Surat 
+       Formulir Surat Keluar
       </h1>
     </section>
 
@@ -215,100 +212,74 @@ desired effect
     <section class="content container-fluid">
 
     <section class="content">
-        
-        <div class="box border-top-solid">
-            <!-- /.box-header -->
-            <div class="table table-hover">
-            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
-              <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
-              <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-              <button type="submit"><i class="fa fa-search"></i></button>
-              </div>
-              </div>
-            </div>
-            <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
-                <thead>
-                <tr role="row">
-                <th style="width: 5px; text-align:center;" aria-sort="ascending">ID</th>
-                <th style="width: 100px;">NRP</th>
-                <th style="width: 154px;">Estimasi</th>
-                <th style="width: 100px;">Jenis Surat</th>
-                <th style="width: 65px;">Status</th></tr>
-                </thead>
-                <tbody>
-                            
-                            
-                    @foreach($index as $surat)       
-                    <tr role="row" class="odd">
-                    <td style="text-align:center;">{{  $surat->id_surat}}</td>
-                    <td>{{ $surat->nrp}}</td>
-                    <td>{{ $surat->estimasi}}</td>
-                    <td>{{ $surat->jenis_surat}}</td>
-                    <td>
-                    <span class="btn btn-danger btn-flat btn-xs">Batal</span>
-                    <span class="btn btn-primary btn-flat btn-xs">Proses</span>
-                    <span class="btn btn-success btn-flat btn-xs">Selesai</span>
-                    </td>
-                    </tr>
-                    @endforeach
-                    
-                </tbody>
-            
-            </table></div></div>
-              <div class="row">
-                <!--<div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div></div> -->
-                <div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style=" float: right; padding-right: 20px; position: relative;"><ul class="pagination">
-              <span>{{ $index->links() }}</span>
-              </ul>
-            </div></div></div></div>
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-        </section>  
+    <div class="container">
+    
+    <div class="container box">
+   <h3 align="center">Live search in laravel using AJAX</h3><br />
+   <div class="panel panel-default">
+    <div class="panel-heading">Search Customer Data</div>
+    <div class="panel-body">
+     <div class="form-group">
+      <input type="text" name="search" id="search" class="form-control" placeholder="Search Customer Data" />
+     </div>
+     <div class="table-responsive">
+      <h3 align="center">Total Data : <span id="total_records"></span></h3>
+      <table class="table table-striped table-bordered">
+       <thead>
+        <tr>
+        <th style="width: 65px;">ID Pelayanan Loket</th>
+        <th style="width: 100px;">Jenis Surat</th>
+        <th style="width: 154px;">Jenis Surat Pelayanan SPs</th>
+        <th style="width: 100px;">Surat Pelayanan Lainnya</th>
+        <th style="width: 65px;">Rincian Jenis Surat</th>
+        <th style="width: 65px;">Tujuan Surat Keluar</th>
+        <th style="width: 65px;">Tujuan Surat</th>
+        <th style="width: 65px;">NRP</th>
+        <th style="width: 65px;">Rincian Tujuan Surat Keluar</th>
+        <th style="width: 65px;">Kode Surat</th>
+        <th style="width: 65px;">Tujuan Surat Keluar Lainnya</th>
+        <th style="width: 65px;">Pengirim Surat Keluar</th>
+        <th style="width: 65px;">Keterangan Pengirim Surat Keluar</th>
+        <th style="width: 65px;">Nomor Surat</th>
+        <th style="width: 65px;">Berkas</th>
+        </tr>
+       </thead>
+       <tbody>
 
+       </tbody>
+      </table>
+     </div>
+    </div>    
+   </div>
+  </div>
 
-        <!-- Modal -->
-        <div id="confirm-delete" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Delete Dialog</h4>
-            </div>
-            <div class="modal-body">
-                <p>As you sure you want to delete.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a class="btn btn-danger btn-ok">Yes</a>
-            </div>
-            </div>
+<script>
+  $(document).ready(function(){
 
-        </div>
-        </div>
+  fetch_customer_data();
 
+  function fetch_customer_data(query = '')
+  {
+    $.ajax({
+    url:"{{ route('live_search.action') }}",
+    method:'GET',
+    data:{query:query},
+    dataType:'json',
+    success:function(data)
+    {
+      $('tbody').html(data.table_data);
+      $('#total_records').text(data.total_data);
+    }
+    })
+  }
 
-        <!-- DataTables -->
-        <script src="http://site.codeglamour.com/ci_adminlte/public/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="http://site.codeglamour.com/ci_adminlte/public/plugins/datatables/dataTables.bootstrap.min.js"></script>
-        <script>
-        $(function () {
-            $("#example1").DataTable();
-        });
-        </script> 
-        <script type="text/javascript">
-            $('#confirm-delete').on('show.bs.modal', function(e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-            });
-        </script>
-        
-        <script>
-        $("#view_users").addClass('active');
-        </script>                                        
-        <!-- page end-->
-	</div>
+  $(document).on('keyup', '#search', function(){
+    var query = $(this).val();
+    fetch_customer_data(query); 
+  });
+  });
+</script>
+
 </section>
 
     </section>

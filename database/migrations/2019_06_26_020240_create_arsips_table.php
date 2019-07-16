@@ -14,21 +14,21 @@ class CreateArsipsTable extends Migration
     public function up()
     {
         Schema::create('arsips', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('jenis_surat');
-            $table->string('surat_pelayanan_sps');
-            $table->string('surat_pelayanan_lainnya');
-            $table->string('rincian_jenis_surat');
             $table->string('id_loket');
-            $table->string('tujuan_surat_keluar');
-            $table->string('tujuan_surat');
-            $table->string('nrp');
-            $table->string('rincian_tujuan_surat');
+            $table->string('jenis_surat');
+            $table->string('surat_pelayanan_sps')->nullable();
+            $table->string('surat_pelayanan_lainnya')->nullable();
+            $table->string('rincian_jenis_surat')->nullable();
+            $table->string('tujuan_surat_keluar')->nullable();
+            $table->string('tujuan_surat')->nullable();
+            $table->string('nrp')->nullable();
+            $table->string('rincian_tujuan_surat')->nullable();
             $table->string('kode_surat');
-            $table->string('tujuan_surat_keluar_lainnya');
-            $table->string('pengirim_Surat_Keluar');
-            $table->string('keterangan_pengirim_surat_keluar');
-            $table->binary('file');
+            $table->string('tujuan_surat_keluar_lainnya')->nullable();
+            $table->string('pengirim_Surat_Keluar')->nullable();
+            $table->string('keterangan_pengirim_surat_keluar')->nullable();
+            $table->bigIncrements('nomor_surat');
+            $table->binary('file')->nullable();
             $table->timestamps();
         });
     }

@@ -15,10 +15,7 @@ Route::get('/', function () {
     return view('admin');
 });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 36e03392ab7838a2fa123983a79caeb8f43b34b0
 Route::get('adminloket', function () {
     return view('admin');
 });
@@ -36,11 +33,17 @@ Route::get('/form', function () {
     return view('form');
 });
 
+Route::get('/coba', function () {
+    return view('coba');
+});
+
 Route::get('arsip', 'ArsipController@create')->name('arsip');
 
 Route::post('arsip/store', 'ArsipController@store');
 
-<<<<<<< HEAD
-=======
 Route::get('/' , 'AdminLoketController@index');
->>>>>>> 36e03392ab7838a2fa123983a79caeb8f43b34b0
+
+Route::get('/list' , 'listArsipController@list');
+
+Route::get('/live_search', 'LiveSearch@index');
+Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
