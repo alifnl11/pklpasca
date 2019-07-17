@@ -21,6 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -186,10 +187,23 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i> Editors</a></li>
+            <li><a href="list"><i class="far fa-circle"></i> Daftar Arsip</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+            <a href="#">
+            <i class="fas fa-history"></i> <span>&nbsp Histori</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengajuan</a></li>
+              <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengambilan</a></li>
+            </ul>
+          </li>
+
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -233,14 +247,14 @@ desired effect
         </div>
         <fieldset class="form-group">
         <label>Jenis Surat</label>
-        <div class="form-check">
-            <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios1" value="Surat Pelayanan SPs" onclick="suratPelayananSPs()">
+        <div class="custom-control custom-radio">
+            <label class="custom-control-label">
+            <input type="radio" class="custom-control-input" name="jenis_surat" id="optionsRadios1" value="Surat Pelayanan SPs" onclick="suratPelayananSPs()">
             Surat Pelayanan SPs
             </label>
         </div>
-        <div class="form-check">
-        <label class="form-check-label">
+        <div class="custom-control custom-radio">
+        <label class="custom-control-label">
             <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios2" value="Surat Keperluan Lain" onclick="suratPelayananLainnya()">
             Surat Keperluan Lain
             </label>
@@ -344,14 +358,14 @@ desired effect
         <label>Tujuan Surat Keluar Pelayanan SPs</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="mahasiswa1" value="Mahasiswa" onclick="tujuanmahasiswasps()">
-            Mahasiswa
+            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="mahasiswa1" value="Pribadi/Personal" onclick="tujuanmahasiswasps()">
+            Pribadi/Personal
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="pribadipersonal1" value="Pribadi/Personal" onclick="tujuanpribadisps()">
-            Pribadi/Personal
+            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="pribadipersonal1" value="Mahasiswa" onclick="tujuanpribadisps()">
+            Mahasiswa
             </label>
         </div>
         </fieldset>

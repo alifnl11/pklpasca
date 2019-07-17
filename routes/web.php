@@ -44,6 +44,5 @@ Route::post('arsip/store', 'ArsipController@store');
 Route::get('/' , 'AdminLoketController@index');
 
 Route::get('/list' , 'listArsipController@list');
+Route::get('/search','listArsipController@search');
 
-Route::get('/live_search', 'LiveSearch@index');
-Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
