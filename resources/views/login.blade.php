@@ -109,7 +109,8 @@
 					<form method="post">
                     <h1 class="tittle_card">
                      Admin IPB Pascasarjana<br><br>
-                    </h1>
+					</h1>
+					
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>

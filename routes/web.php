@@ -37,6 +37,10 @@ Route::get('/form', function () {
     return view('form');
 });
 
+Route::get('/coba', function () {
+    return view('coba');
+});
+
 Route::get('arsip', 'ArsipController@create')->name('arsip');
 
 Route::post('arsip/store', 'ArsipController@store');
@@ -47,4 +51,8 @@ Route::get('/' , 'AdminLoketController@index');
 Route::get('/login', 'MainController@index');
 
 Route::get('/' , 'AdminLoketController@index');
+Route::get('/' , 'AdminLoketController@index');
+
+Route::get('/list' , 'listArsipController@list');
+Route::get('/search','listArsipController@search');
 

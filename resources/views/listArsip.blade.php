@@ -32,7 +32,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
+  <!-- Style Untuk Modal popup -->
+  <style>
+    .modal-body{
+      height:500px;
+      overflow:hidden;
+    }
+    .modal-body:hover{overflow-y:auto;}
+
+    .modal-title {
+      margin: 0 auto;
+    }
+
+    .popupheader{
+      height:50px;
+      width:600px;
+      background-color:#3C8DBC;
+      color:white;
+      
+    }
+
+    .fade{
+      opacity:1;
+      -webkit-transaction: opacity 1s linear;
+      transaction: opacity 1s linear;
+    }
+  </style>
+
+  </head>
 <!--
 BODY TAG OPTIONS:
 =================
@@ -181,7 +208,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
-            <li><a href="list"><i class="far fa-circle"></i> Daftar Arsip </a></li>
+            <li><a href="list"><i class="far fa-circle"></i>Daftar Arsip </a></li>
           </ul>
 
           <li class="treeview">
@@ -207,58 +234,93 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Pengajuan Surat 
+        List Arsip Pengajuan Surat 
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+      
     <section class="content">
-        
+    
         <div class="box border-top-solid">
             <!-- /.box-header -->
-            <div class="table table-hover">
-            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
-              <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
-              <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-              <button type="submit"><i class="fa fa-search"></i></button>
-              </div>
-              </div>
+            <div class="box-body table-responsive">
+            <div class="col-md-6">
+              <form action="/search" method="get">
+                <div class="input-group">
+                  <input type="search" class="form-control" name="search" autocomplete="off" autofocus>
+                  <span class="input-group-prepend">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                  </span>
+                </div>
+              </form>
             </div>
+                  
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+            <ul>
+              @foreach($errors-> all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+            </div>
+            @endif
+            @if(\Session::has('success'))
+            <div class="alert alert-success">
+                <p>{{ \Session::get('success') }}</p>
+            </div>
+            @endif
+            
             <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
                 <thead>
                 <tr role="row">
-                <th style="width: 5px; text-align:center;" aria-sort="ascending">ID</th>
-                <th style="width: 100px;">NRP</th>
-                <th style="width: 154px;">Estimasi</th>
+                <th style="width: 65px;">ID Pelayanan Loket</th>
                 <th style="width: 100px;">Jenis Surat</th>
-                <th style="width: 65px;">Status</th></tr>
+                <th style="width: 154px;">Jenis Surat Pelayanan SPs</th>
+                <th style="width: 100px;">Surat Pelayanan Lainnya</th>
+                <th style="width: 65px;">Rincian Jenis Surat</th>
+                <th style="width: 65px;">Tujuan Surat Keluar</th>
+                <th style="width: 65px;">Tujuan Surat</th>
+                <th style="width: 65px;">NRP</th>
+                <th style="width: 65px;">Rincian Tujuan Surat Keluar</th>
+                <th style="width: 65px;">Kode Surat</th>
+                <th style="width: 65px;">Tujuan Surat Keluar Lainnya</th>
+                <th style="width: 65px;">Pengirim Surat Keluar</th>
+                <th style="width: 65px;">Keterangan Pengirim Surat Keluar</th>
+                <th style="width: 65px;">Nomor Surat</th>
+                <th style="width: 65px;">Berkas</th>
                 </thead>
                 <tbody>
-                            
-                            
-                    @foreach($index as $surat)       
+                @foreach($list as $arsip)       
                     <tr role="row" class="odd">
-                    <td style="text-align:center;">{{  $surat->id_surat}}</td>
-                    <td>{{ $surat->nrp}}</td>
-                    <td>{{ $surat->estimasi}}</td>
-                    <td>{{ $surat->jenis_surat}}</td>
-                    <td>
-                    <span class="btn btn-danger btn-flat btn-xs">Batal</span>
-                    <span class="btn btn-primary btn-flat btn-xs">Proses</span>
-                    <span class="btn btn-success btn-flat btn-xs">Selesai</span>
-                    </td>
-                    </tr>
-                    @endforeach
+                    <td>{{ $arsip->id_loket}}</td>
+                    <td style="text-align:center;">{{  $arsip->jenis_surat}}</td>
+                    <td>{{ $arsip->surat_pelayanan_sps}}</td>
+                    <td>{{ $arsip->surat_pelayanan_lainnya}}</td>
+                    <td>{{ $arsip->rincian_jenis_surat}}</td>
+                    <td>{{ $arsip->tujuan_surat_keluar}}</td>
+                    <td>{{ $arsip->tujuan_surat}}</td>
+                    <td>{{ $arsip->nrp}}</td>
+                    <td>{{ $arsip->rincian_tujuan_surat}}</td>
+                    <td>{{ $arsip->kode_surat}}</td>
+                    <td>{{ $arsip->tujuan_surat_keluar_lainnya}}</td>
+                    <td>{{ $arsip->pengirim_Surat_Keluar}}</td>
+                    <td>{{ $arsip->keterangan_pengirim_surat_keluar}}</td>
+                    <td>{{ $arsip->nomor_surat }}</td>
+                    <td>{{ $arsip->file}}</td>
                     
+                    </tr>
+                    @endforeach         
+                            
+                 
                 </tbody>
             
             </table></div></div>
               <div class="row">
                 <!--<div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div></div> -->
                 <div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style=" float: right; padding-right: 20px; position: relative;"><ul class="pagination">
-              <span>{{ $index->links() }}</span>
+                <span>{{ $list->links() }}</span>
               </ul>
             </div></div></div></div>
             </div>
@@ -266,7 +328,6 @@ desired effect
         </div>
         <!-- /.box -->
         </section>  
-
 
         <!-- Modal -->
         <div id="confirm-delete" class="modal fade" role="dialog">
