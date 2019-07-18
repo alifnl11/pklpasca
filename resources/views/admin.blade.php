@@ -251,19 +251,15 @@ desired effect
                     </td>
                     </tr>
                     @endforeach
-                  
+                    
                 </tbody>
             
             </table></div></div>
               <div class="row">
-                <div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div></div>
+                <!--<div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div></div> -->
                 <div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style=" float: right; padding-right: 20px; position: relative;"><ul class="pagination">
-              <li class="paginate_button previous disabled" id="example1_previous">
-              <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
-              </li>
-              <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li>
-              <li class="paginate_button next disabled" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">Next</a>
-              </li></ul>
+              <span>{{ $index->links() }}</span>
+              </ul>
             </div></div></div></div>
             </div>
             <!-- /.box-body -->
