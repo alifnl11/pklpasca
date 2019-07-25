@@ -9,28 +9,11 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-Route::get('/', function () {
-    return view('admin');
-});
+*/  
 
 
 Route::get('login', function () {
     return view('login');
-});
-
-Route::get('adminloket', function () {
-    return view('admin');
-});
-
-Route::get('adminttd', function () {
-    return view('adminTTDpimpinan');
-});
-
-
-Route::get('adminpermohonansurat', function () {
-    return view('adminPermohonanSurat');
 });
 
 Route::get('/form', function () {
@@ -46,13 +29,17 @@ Route::get('arsip', 'ArsipController@create')->name('arsip');
 Route::post('arsip/store', 'ArsipController@store');
 
 
-Route::get('/' , 'AdminLoketController@index');
+Route::get('/adminloket' , 'AdminLoketController@index');
+Route::get('/adminPermohonanSurat' , 'AdminPermohonanSurat@index');
+Route::get('/adminTTDpimpinan' , 'AdminTTDPimpinan@index');
 
-Route::get('/login', 'MainController@index');
-
-Route::get('/' , 'AdminLoketController@index');
-Route::get('/' , 'AdminLoketController@index');
+Route::get('/login', 'LoginController@username');
+Route::get('/login', 'LoginController@__construct');
 
 Route::get('/list' , 'listArsipController@list');
 Route::get('/search','listArsipController@search');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
