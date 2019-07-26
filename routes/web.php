@@ -37,3 +37,11 @@ Route::get('arsip', 'ArsipController@create')->name('arsip');
 Route::post('arsip/store', 'ArsipController@store');
 
 Route::get('/' , 'AdminLoketController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

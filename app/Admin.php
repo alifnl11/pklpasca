@@ -11,6 +11,5 @@ class Admin extends Model
         'jenis_admin',
         'status_admin'
     ];
-    public $timestamps = false;
 }
 

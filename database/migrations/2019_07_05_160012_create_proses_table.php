@@ -21,6 +21,7 @@ class CreateProsesTable extends Migration
             $table->date('estimasi')->nullable(true);
             $table->enum('status', array('Proses','Batal','Selesai'))->default('Proses');
             $table->string('jenis_surat')->nullable(true);
+            $table->string('email')->nullable(true);
             $table->timestamps();
         });
     }

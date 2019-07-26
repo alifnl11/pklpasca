@@ -12,7 +12,8 @@ class Proses extends Model
         'id_surat',
         'estimasi',
         'status',
-        'jenis_surat'
+        'jenis_surat',
+        // 'email'
     ];
 
     public function surat(){

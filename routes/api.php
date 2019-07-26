@@ -20,6 +20,7 @@ Route::get('/mahasiswa/{id}','MahasiswaController@show');
 Route::put('/mahasiswa/{id}','MahasiswaController@update');
 Route::delete('/mahasiswa/{id}','MahasiswaController@delete');
 
-Route::get('/v1/mahasiswa','MahasiswaGuzzleController@getDataMahasiswa');
+Route::get('/v1/mahasiswa','GuzzleController@getDataMahasiswa');
 Route::get('/v1/surat','GuzzleController@getDataSurat');
 Route::get('/v1/proses','GuzzleController@getDataProses');
+Route::get('/v1/admin','GuzzleController@getDataAdmin');
