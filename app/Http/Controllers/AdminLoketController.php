@@ -9,6 +9,6 @@ class AdminLoketController extends Controller
 {
     public function index() {
         $index = Surat::paginate(3);
-        return view('admin',['index' => $index]);
+        return view('adminloket',['index' => $index]);
     }
 }

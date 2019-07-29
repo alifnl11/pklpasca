@@ -181,7 +181,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Arsip </a></li>
+            <li><a href="list"><i class="far fa-circle"></i> Daftar Arsip </a></li>
           </ul>
 
           <li class="treeview">
@@ -218,7 +218,7 @@ desired effect
         
         <div class="box border-top-solid">
             <!-- /.box-header -->
-            <div class="box-body table-responsive">
+            <div class="table table-hover">
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
               <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
               <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>

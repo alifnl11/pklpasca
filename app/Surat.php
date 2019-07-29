@@ -8,14 +8,13 @@ class Surat extends Model
 {
     protected $fillable = [
         'id_surat',
-        'nama_surat',
-        'waktu',
-        'syarat'
+        'jenis_surat',
+        'waktu'
     ];
     
     public $timestamps = false;
 
-    public function proses2(){
-        return $this->belongsTo(Proses::class,'id_surat','id_surat');
+    public function proses(){
+        return $this->belongsTo(Proses::class,'id_surat');
     }
 }

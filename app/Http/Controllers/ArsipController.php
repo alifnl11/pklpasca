@@ -36,27 +36,17 @@ class ArsipController extends Controller
     public function store(Request $request)
     {
        $this->validate($request, [
-        'jenis_surat'                      => 'required',
-        'surat_pelayanan_sps'              => 'required',
-        'surat_pelayanan_lainnya'          => 'required',
-        'rincian_jenis_surat'              => 'required',
         'id_loket'                         => 'required',
-        'tujuan_surat_keluar'              => 'required',
-        'tujuan_surat'                     => 'required',
-        'nrp'                              => 'required',
-        'rincian_tujuan_surat'             => 'required',
+        'jenis_surat'                      => 'required',
         'kode_surat'                       => 'required',
-        'tujuan_surat_keluar_lainnya'      => 'required',
-        'pengirim_Surat_Keluar'            => 'required',
-        'keterangan_pengirim_surat_keluar' => 'required',
-        'file'                             => 'required'
+        
        ]); //
        $arsip = new Arsip([
+        'id_loket'                         => $request->get('id_loket'),
         'jenis_surat'                      => $request->get('jenis_surat'),
         'surat_pelayanan_sps'              => $request->get('surat_pelayanan_sps'),
         'surat_pelayanan_lainnya'          => $request->get('surat_pelayanan_lainnya'),
         'rincian_jenis_surat'              => $request->get('rincian_jenis_surat'),
-        'id_loket'                         => $request->get('id_loket'),
         'tujuan_surat_keluar'              => $request->get('tujuan_surat_keluar'),
         'tujuan_surat'                     => $request->get('tujuan_surat'),
         'nrp'                              => $request->get('nrp'),

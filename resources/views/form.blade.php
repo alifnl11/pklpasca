@@ -21,6 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap.css">
  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +34,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -182,10 +187,23 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="far fa-circle"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="far fa-circle"></i> Editors</a></li>
+            <li><a href="list"><i class="far fa-circle"></i> Daftar Arsip</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+            <a href="#">
+            <i class="fas fa-history"></i> <span>&nbsp Histori</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengajuan</a></li>
+              <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengambilan</a></li>
+            </ul>
+          </li>
+
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -223,25 +241,30 @@ desired effect
     <form method="post" action="arsip/store" >
     {{csrf_field()}}
     <fieldset>
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">ID_Pelayanan Loket</label>
+          <input type="text" name="id_loket" class="form-control" placeholder="" id="inputDefault">
+        </div>
         <fieldset class="form-group">
         <label>Jenis Surat</label>
-        <div class="form-check">
-            <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios1" value="Surat Pelayanan SPs" checked="">
+        <div class="custom-control custom-radio">
+            <label class="custom-control-label">
+            <input type="radio" class="custom-control-input" name="jenis_surat" id="optionsRadios1" value="Surat Pelayanan SPs" onclick="suratPelayananSPs()">
             Surat Pelayanan SPs
             </label>
         </div>
-        <div class="form-check">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios2" value="Surat Keperluan Lain">
+        <div class="custom-control custom-radio">
+        <label class="custom-control-label">
+            <input type="radio" class="form-check-input" name="jenis_surat" id="optionsRadios2" value="Surat Keperluan Lain" onclick="suratPelayananLainnya()">
             Surat Keperluan Lain
             </label>
         </div>
         </fieldset>
 
-        <div class="form-group">
+        <div class="form-group" id="pilihansuratlayananSps">
         <label for="exampleSelect2">Surat Pelayanan SPs</label>
-        <select id="tags-select" name="surat_pelayanan_sps">
+        <select class="myselect" id="tags-select" name="surat_pelayanan_sps">
+            <option value=""></option>
             <option value="Kartu Tanda Mahasiswa">Kartu Tanda Mahasiswa</option>
             <option value="Form Rencana Studi">Form Rencana Studi</option>
             <option value="Lembar Hasil Studi">Lembar Hasil Studi</option>
@@ -311,62 +334,65 @@ desired effect
             <option value="Linieritas Program Studi">Linieritas Program Studi</option>
         </select>
         </div>
+    
+        <div class="form-check" id="tulisSuratSPslain">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="" id="suratspslainnyaa" onclick="suratPelayananSpsLainnya()">
+          Lainnya
+        </label>
+        </div>
 
-        <div class="form-group">
+        <div class="form-group" id="suratpelayananlainnya" style="display:none;">
         <label class="col-form-label" for="inputDefault">Surat Pelayanan Lainnya</label>
         <input type="text" name="surat_pelayanan_lainnya" class="form-control" placeholder="" id="inputDefault">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="rincianjenissurat">
         <label class="col-form-label" for="inputDefault">Rincian Jenis Surat</label>
-        <input type="text" name="rincian_jenis_surat" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="rincian_jenis_surat" class="form-control" placeholder="" >
         </div>
 
-        <label>Tujuan Surat Pelayanan SPs</label>
-        <div class="form-group">
-        <label class="col-form-label" for="inputDefault">ID_Pelayanan Loket</label>
-        <input type="text" name="id_loket" class="form-control" placeholder="" id="inputDefault">
-        </div>
+             
 
-        <fieldset class="form-group">
-        <label>Tujuan Surat Keluar</label>
+        <fieldset class="form-group" id="tujuansuratsps">
+        <label>Tujuan Surat Keluar Pelayanan SPs</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="optionsRadios1" value="Mahasiswa" checked="">
-            Mahasiswa
+            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="mahasiswa1" value="Pribadi/Personal" onclick="tujuanmahasiswasps()">
+            Pribadi/Personal
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="optionsRadios2" value="Pribadi/Personal">
-            Pribadi/Personal
+            <input type="radio" class="form-check-input" name="tujuan_surat_keluar" id="pribadipersonal1" value="Mahasiswa" onclick="tujuanpribadisps()">
+            Mahasiswa
             </label>
         </div>
         </fieldset>
 
-        <fieldset class="form-group">
+        <fieldset class="form-group" id="tujuansuratpelayananlain">
             <label>Tujuan Surat</label>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="tujuan_surat" id="optionsRadios1" value="Mahasiswa" checked="">
+                <input type="radio" class="form-check-input" name="tujuan_surat" id="mahasiswa2" value="Mahasiswa" onclick="tujuanmahasiswasps()">
                 Mahasiswa
                 </label>
                 </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="tujuan_surat" id="optionsRadios2" value="Direktorat/Kantor/Unit">
+                <input type="radio" class="form-check-input" name="tujuan_surat" id="direktoratkantorunit" value="Direktorat/Kantor/Unit" onclick="tujuandirektorat()">
                 Direktorat/Kantor/Unit
                 </label>
             </div>
             <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="tujuan_surat" id="optionsRadios3" value="Pribadi/Personal">
+                <input type="radio" class="form-check-input" name="tujuan_surat" id="pribadipersonal2" value="Pribadi/Personal" onclick="tujuanpribadisps()">
                 Pribadi/Personal
                 </label>
             </div>
         </fieldset>
 
-        <div class="form-group">
+        <div class="form-group" id="nrp" style="display:none;">
         <label>Data Mahasiswa</label>
         <label class="col-form-label" for="inputDefault">NRP</label>
         <input type="text" name="nrp" class="form-control" placeholder="" id="inputDefault">
@@ -374,7 +400,8 @@ desired effect
 
         <div class="form-group">
         <label for="exampleSelect2">Rincian Tujuan Surat Keluar</label>
-        <select id="tags-select" name="rincian_tujuan_surat">
+        <select  class="myselect" id="tags-select" name="rincian_tujuan_surat">
+            <option value=""></option>
             <option value="Mahasiswa yang Bersangkutan">Mahasiswa yang Bersangkutan</option>
             <option value="Komisi Penguji">Komisi Penguji</option>
             <option value="Komisi Pembimbing">Komisi Pembimbing</option>
@@ -419,8 +446,14 @@ desired effect
         </div>
 
         <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Tujuan Surat Keluar Lainnya</label>
+        <input type="text" name="tujuan_surat_keluar_lainnya" class="form-control" placeholder="" id="inputDefault">
+        </div>
+
+        <div class="form-group">
         <label for="exampleSelect2">Kode Surat</label>
-        <select id="tags-select" name="kode_surat">
+        <select class="myselect" id="tags-select" name="kode_surat">
+            <option value=""></option>
             <option value="AK - Data dan Informasi Akademik">AK - Data dan Informasi Akademik</option>
             <option value="DL - Pendidikan dan Pelatihan">DL - Pendidikan dan Pelatihan</option>
             <option value="DT - Tata Pamong Perguruan Tinggi">DT - Tata Pamong Perguruan Tinggi</option>
@@ -443,58 +476,55 @@ desired effect
         </select>
         </div>
 
-        <div class="form-group">
-        <label class="col-form-label" for="inputDefault">Tujuan Surat Keluar Lainnya</label>
-        <input type="text" name="tujuan_surat_keluar_lainnya" class="form-control" placeholder="" id="inputDefault">
-        </div>
+        
 
         <fieldset class="form-group">
         <label>Pengirim Surat Keluar</label>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios1" value="Dekan SPs" checked="">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="dekansps" value="Dekan SPs">
             Dekan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="wAKIL Dekan SPs">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="wakildekansps" value="wAKIL Dekan SPs">
             Wakil Dekan SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Sekretaris Program Doktor (S3)">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="sekretarisprogramdoktor" value="Sekretaris Program Doktor (S3)">
             Sekretaris Program Doktor (S3)
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Sekretaris Program Magister (S2)">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="sekretarisprogrammagister" value="Sekretaris Program Magister (S2)">
             Sekretaris Program Magister (S2)
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Kepala Tata Usaha SPs">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="kepalatatausahasps" value="Kepala Tata Usaha SPs">
             Kepala Tata Usaha SPs
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Pimpinan Sidang Promosi Terbuka S3">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="pimpinansidangpromositerbukas3" value="Pimpinan Sidang Promosi Terbuka S3">
             Pimpinan Sidang Promosi Terbuka S3
             </label>
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="optionsRadios2" value="Pengirim Lainnya">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="pengirimlainnya" value="Pengirim Lainnya" onclick="tulispengirimlain()">
             Pengirim Lainnya
             </label>
         </div>
         </fieldset>
 
-        <div class="form-group">
+        <div class="form-group" id="pengirimlain" style="display:none;">
         <label class="col-form-label" for="inputDefault">Keterangan Pengirim Surat Keluar</label>
         <input type="text" name="keterangan_pengirim_surat_keluar" class="form-control" placeholder="" id="inputDefault">
         </div>
@@ -506,6 +536,97 @@ desired effect
         
         <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
+    <script type="text/javascript">
+          $(".myselect").select2();
+    </script>
+    
+    <script>
+      function suratPelayananSPs() {
+        if(document.getElementById('optionsRadios1').checked){
+          document.getElementById('rincianjenissurat').style.display='none';
+          document.getElementById('tujuansuratpelayananlain').style.display='none';
+                    
+        }else{
+          document.getElementById('rincianjenissurat').style.display='block';
+          document.getElementById('tujuansuratpelayananlain').style.display='block';
+        }
+      }
+
+      function suratPelayananLainnya() {
+        if(document.getElementById('optionsRadios2').checked){
+          document.getElementById('pilihansuratlayananSps').style.display='none';
+          document.getElementById('suratpelayananlainnya').style.display='none';
+          document.getElementById('tujuansuratsps').style.display='none';
+          document.getElementById('tulisSuratSPslain').style.display='none';
+          
+          
+        }else{
+          document.getElementById('pilihansuratlayananSps').style.display='block';
+          document.getElementById('suratpelayananlainnya').style.display='block';
+          document.getElementById('tujuansuratsps').style.display='block';
+          document.getElementById('tulisSuratSPslain').style.display='block';
+         
+        }
+      }
+      
+      function suratPelayananSpsLainnya() {
+        if(document.getElementById('suratspslainnyaa').checked){
+          document.getElementById('suratpelayananlainnya').style.display='block';        
+        }else{
+          document.getElementById('suratpelayananlainnya').style.display='none';
+        }
+      }
+
+      function tujuanmahasiswasps() {
+        if(document.getElementById('mahasiswa1').checked){
+          document.getElementById('nrp').style.display='block';        
+        }else{
+          document.getElementById('nrp').style.display='none';
+        }
+      }
+
+      function tujuanpribadisps() {
+        if(document.getElementById('pribadipersonal1').checked){
+          document.getElementById('nrp').style.display='none';        
+        }else{
+          document.getElementById('nrp').style.display='block';
+        }
+      }
+
+      function tujuanmahasiswasps() {
+        if(document.getElementById('mahasiswa2').checked){
+          document.getElementById('nrp').style.display='block';        
+        }else{
+          document.getElementById('nrp').style.display='none';
+        }
+      }
+
+      function tujuanpribadisps() {
+        if(document.getElementById('pribadipersonal2').checked){
+          document.getElementById('nrp').style.display='none';        
+        }else{
+          document.getElementById('nrp').style.display='block';
+        }
+      }
+
+      function tujuandirektorat() {
+        if(document.getElementById('direktoratkantorunit').checked){
+          document.getElementById('nrp').style.display='none';        
+        }else{
+          document.getElementById('nrp').style.display='block';
+        }
+      }
+
+      function tulispengirimlain() {
+        if(document.getElementById('pengirimlainnya').checked){
+          document.getElementById('pengirimlain').style.display='block';        
+        }else{
+          document.getElementById('pengirimlain').style.display='none';
+        }
+      }
+
+    </script>
+    
     </form>
 </div>
        
