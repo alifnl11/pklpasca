@@ -28,6 +28,8 @@ Route::get('arsip', 'ArsipController@create')->name('arsip');
 
 Route::post('arsip/store', 'ArsipController@store');
 
+Route::get('/' , 'AdminLoketController@index');
+
 
 Route::get('/adminloket' , 'AdminLoketController@index');
 Route::get('/adminPermohonanSurat' , 'AdminPermohonanSurat@index');
@@ -53,3 +55,4 @@ Route::get('/ttd/{id_prosess}/status/{statuss}', 'adminttdController@changeStatu
 
 Route::get('adminpermohonansurat','penomoranController@status')->name('penomoran');
 Route::get('/penomoran/{id_prosess}/status/{statuss}', 'penomoranController@changeStatus')->name('penomoran.status');
+
