@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Arsip;
+use DB;
 
 class ArsipController extends Controller
 {
@@ -36,9 +37,8 @@ class ArsipController extends Controller
     public function store(Request $request)
     {
        $this->validate($request, [
-        'id_loket'                         => 'required',
         'jenis_surat'                      => 'required',
-        'kode_surat'                       => 'required',
+        
         
        ]); //
        $arsip = new Arsip([
@@ -58,7 +58,7 @@ class ArsipController extends Controller
         'file'                             => $request->get('file')
        ]);
        $arsip-> save();
-       return redirect()->route('arsip')->with('success','Data Added');
+       return redirect()->route('arsip')->with('success','Arsip berhasil ditambahkan');
 
     }
 
@@ -81,7 +81,8 @@ class ArsipController extends Controller
      */
     public function edit($id)
     {
-        //
+        $arsip = \App\Arsip::find($id);
+        return view('edit',['arsip' => $arsip]);
     }
 
     /**
@@ -93,7 +94,10 @@ class ArsipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $arsip = \App\Arsip::find($id);
+        $arsip->update($request->all());
+        return redirect()->route('list')->withSuccess('Data berhasil diupdate');
+        
     }
 
     /**

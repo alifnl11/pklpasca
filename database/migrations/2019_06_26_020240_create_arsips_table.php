@@ -14,7 +14,8 @@ class CreateArsipsTable extends Migration
     public function up()
     {
         Schema::create('arsips', function (Blueprint $table) {
-            $table->string('id_loket');
+            $table->string('id_loket')->nullable();
+            $table->bigIncrements('id');
             $table->string('jenis_surat');
             $table->string('surat_pelayanan_sps')->nullable();
             $table->string('surat_pelayanan_lainnya')->nullable();
@@ -23,11 +24,10 @@ class CreateArsipsTable extends Migration
             $table->string('tujuan_surat')->nullable();
             $table->string('nrp')->nullable();
             $table->string('rincian_tujuan_surat')->nullable();
-            $table->string('kode_surat');
+            $table->string('kode_surat')->nullable();
             $table->string('tujuan_surat_keluar_lainnya')->nullable();
             $table->string('pengirim_Surat_Keluar')->nullable();
             $table->string('keterangan_pengirim_surat_keluar')->nullable();
-            $table->bigIncrements('nomor_surat');
             $table->binary('file')->nullable();
             $table->timestamps();
         });

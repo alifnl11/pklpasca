@@ -171,9 +171,9 @@ desired effect
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="adminloket"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
-                    <li><a href="adminTTDpimpinan"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
-                    <li><a href="adminPermohonanSurat"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
+                    <li><a href="/"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
+                    <li><a href="adminttd"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
+                    <li><a href="adminpermohonansurat"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
                 </ul>
                 </li>
                 <li class="treeview">

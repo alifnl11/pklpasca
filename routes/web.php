@@ -36,10 +36,20 @@ Route::get('/adminTTDpimpinan' , 'AdminTTDPimpinan@index');
 Route::get('/login', 'LoginController@username');
 Route::get('/login', 'LoginController@__construct');
 
-Route::get('/list' , 'listArsipController@list');
+Route::get('/list' , 'listArsipController@list')->name('list');
 Route::get('/search','listArsipController@search');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/' , 'cobaController@status')->name('coba');
+
+Route::get('list/{id}/edit', 'ArsipController@edit')->name('arsip.edit');
+Route::post('list/{id}/update', 'ArsipController@update')->name('arsip.update');
+Route::get('/coba/{id_prosess}/status/{statuss}', 'cobaController@changeStatus')->name('coba.status');
+Route::get('adminttd','adminttdController@status')->name('ttd');
+Route::get('/ttd/{id_prosess}/status/{statuss}', 'adminttdController@changeStatus')->name('ttd.status');
+
+Route::get('adminpermohonansurat','penomoranController@status')->name('penomoran');
+Route::get('/penomoran/{id_prosess}/status/{statuss}', 'penomoranController@changeStatus')->name('penomoran.status');
