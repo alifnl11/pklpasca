@@ -28,13 +28,6 @@ Route::get('arsip', 'ArsipController@create')->name('arsip');
 
 Route::post('arsip/store', 'ArsipController@store');
 
-Route::get('/' , 'AdminLoketController@index');
-
-
-Route::get('/adminloket' , 'AdminLoketController@index');
-Route::get('/adminPermohonanSurat' , 'AdminPermohonanSurat@index');
-Route::get('/adminTTDpimpinan' , 'AdminTTDPimpinan@index');
-
 Route::get('/login', 'LoginController@username');
 Route::get('/login', 'LoginController@__construct');
 
