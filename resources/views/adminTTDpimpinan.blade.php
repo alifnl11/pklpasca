@@ -39,14 +39,17 @@
                             
                             
                     @foreach($status as $surat)
-                     @if($surat->statuss == 'Diterima')       
+                     @if($surat->status == 'Diterima')       
                       <tr role="row" class="odd">
-                      <td style="text-align:center;">{{  $surat->id_prosess}}</td>
-                      <td>{{ $surat->nrpp}}</td>
-                      <td>{{ $surat->estimasii}}</td>
-                      <td>{{ $surat->jenis_suratt}}</td>
-                      <td>{{ $surat->statuss}}</td>
-                      <td><a href="{{ route('ttd.status',['id_prosess'=>$surat->id_prosess,'statuss'=>$surat->statuss]) }}" class="btn btn-warning btn-sm">Selesai</a></td>
+                      <td style="text-align:center;">{{  $surat->id_proses}}</td>
+                      <td>{{ $surat->nrp}}</td>
+                      <td>{{ $surat->estimasi}}</td>
+                      <td>{{ $surat->jenis_surat}}</td>
+                      <td>{{ $surat->status}}</td>
+                      <td>
+                      <a href="{{ route('penolakan.status',['id_proses'=>$surat->id_proses,'status'=>$surat->status]) }}" class="btn btn-danger btn-sm">Ditolak</a>
+                      <a href="{{ route('ttd.status',['id_proses'=>$surat->id_proses,'status'=>$surat->status]) }}" class="btn btn-success btn-sm">Selesai</a>
+                      </td>
                       </tr>
                      @endif
                     @endforeach

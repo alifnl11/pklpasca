@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Track;
+use App\Proses;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class adminttdController extends Controller
 {
     public function status() {
-        $status = Track::paginate(5);
+        $status = Proses::paginate(5);
         return view('adminTTDpimpinan',['status' => $status]);
     }
     
-    public function changeStatus($id_prosess, $statuss)
+    public function changeStatus($id_proses, $status)
     {
-    $coba = Track::findOrFail($id_prosess);
-    $coba->statuss = 'Sudah Di tanda tangani';
+    $coba = Proses::findOrFail($id_proses);
+    $coba->status = 'Sudah Di tanda tangani';
     $coba->save();
-    $alamat_email= $coba->alamat_email;
+    $email= $coba->email;
     $email_body= 'status surat Di tanda tangani';
 
     $data=array(
@@ -25,8 +25,8 @@ class adminttdController extends Controller
         'email_body' => $email_body
       );
 
-      Mail::send('layouts.email-template',$data,function($mail)use($alamat_email){
-        $mail->to($alamat_email,'no-reply')
+      Mail::send('layouts.email-template',$data,function($mail)use($email){
+        $mail->to($email,'no-reply')
           ->subject("(Update) Data Surat");
         $mail->from('noreply.trackingsuratspsipb@gmail.com','Update Tracking');
  

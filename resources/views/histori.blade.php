@@ -33,23 +33,34 @@
                   <th style="width: 154px;">Estimasi</th>
                   <th style="width: 100px;">Jenis Surat</th>
                   <th style="width: 65px;">Status</th>
-                  <th style="width: 65px;">Aksi</th></tr>
                   </thead>
                   <tbody>
                               
                               
                       @foreach($status as $surat)
-                       @if($surat->status == 'Sudah Di tanda tangani')       
+                       @if($surat->status == 'Telah Diambil')       
                         <tr role="row" class="odd">
                         <td style="text-align:center;">{{  $surat->id_proses}}</td>
                         <td>{{ $surat->nrp}}</td>
                         <td>{{ $surat->estimasi}}</td>
                         <td>{{ $surat->jenis_surat}}</td>
                         <td>{{ $surat->status}}</td>
-                        <td><a href="{{ route('penomoran.status',['id_proses'=>$surat->id_proses,'status'=>$surat->status]) }}" class="btn btn-success btn-sm">Selesai</a></td>
                         </tr>
                        @endif
                       @endforeach
+                      
+                      @foreach($status as $surat)
+                       @if($surat->status == 'Surat Ditolak')       
+                        <tr role="row" class="odd">
+                        <td style="text-align:center;">{{  $surat->id_proses}}</td>
+                        <td>{{ $surat->nrp}}</td>
+                        <td>{{ $surat->estimasi}}</td>
+                        <td>{{ $surat->jenis_surat}}</td>
+                        <td>{{ $surat->status}}</td>
+                        </tr>
+                       @endif
+                      @endforeach
+
                   </tbody>
               
               </table></div></div>
