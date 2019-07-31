@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     protected $fillable = [
+        'id',
         'nrp',
-        'nama',
-        'mayor',
-        'prodi'
+        'email'
     ];
 
     public $timestamps = false;
+
+    public function proses(){
+        return $this->hasMany(Proses::class,'nrp');
+    }
 }
