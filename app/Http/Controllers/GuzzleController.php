@@ -7,44 +7,56 @@ use function GuzzleHttp\json_decode;
 use App\Surat;
 use App\Proses;
 use App\Mahasiswa;
-use Illuminate\Support\Facades\DB;
 use App\Admin;
+
 
 class GuzzleController extends Controller
 {
     public function getDataSurat(){
         for($i=1; $i<=67; $i++){
             $client = new CLient();
-            $request = $client->get('http://pelayananpasca.ipb.ac.id/antrian/api/web/v1/pengajuan/'.$i.'');
+            $request = $client->get('http://pelayananpasca.ipb.ac.id/antrian/api/web/v1/pengajuan/'.$i);
             $response = $request->getBody()->getContents();   
         
             $data = json_decode($response, true);
 
             $surat = new Surat();
             $surat->id_surat = $data['id_pengajuan'];
+            $cek = Surat::where('id_surat',$surat->id_surat )->count();
+            if($cek>0)
+            echo "<script>alert('Id Surat Sudah Terupdate');</script>";
+            else{
             $surat->jenis_surat = $data['nama_surat'];
             $surat->waktu = $data['waktu'];
             $surat->save();
+            }
         }
         return "Data Berhasil Masuk";
     }
 
     public function getDataMahasiswa(){
-        $client = new CLient();
-        $request = $client->get('http://pelayananpasca.ipb.ac.id/antrian/api/web/v1/mahasiswa');
-        $response = $request->getBody()->getContents();   
-        
-        $data = json_decode($response, true);
+        ini_set('max_execution_time', 0);
+        for($i=1; $i<=12435; $i++){
+            $client = new CLient();
+            $request = $client->get('http://pelayananpasca.ipb.ac.id/antrian/api/web/v1/emailmahasiswa/'.$i,['stream' => true]);
+            $response = $request->getBody()->getContents();   
+            
+            $data = json_decode($response, true);
 
-        foreach($data as $row){
             $mahasiswa = new Mahasiswa();
-            $mahasiswa->nrp = $row["nrp"];
-            $mahasiswa->nama = $row["nama"];
-            $mahasiswa->mayor = $row["mayor"];
-            $mahasiswa->prodi = $row["prodi"];
+            $mahasiswa->id = $data["id"];
+            $mahasiswa->nrp = $data["nrp"];
+            $cek = Mahasiswa::where('nrp',$mahasiswa->nrp )->count();
+            if($cek>0)
+            echo "<script>alert('NRP Sudah Terupdate');</script>";
+            else{
+            if($data["email"] == ' ')
+            $mahasiswa->email = null;
+            else 
+            $mahasiswa->email = $data["email"];
             $mahasiswa->save();    
+            }
         }
-
         return "Data Berhasil Masuk";
     }
 
@@ -57,11 +69,16 @@ class GuzzleController extends Controller
 
         foreach($data as $row){
             $admin = new Admin();
-            $admin->id_admin    = $row["id"];
-            $admin->nama        = $row["nama"];
-            $admin->jenis_admin = $row["mayor"];
-            $admin->prodi       = $row["prodi"];
+            $admin->username = $row["id"];
+            $cek = Admin::where('username',$admin->username )->count(); 
+            if($cek>0)
+            echo "<script>alert('Username Sudah Terupdate');</script>";
+            else{
+            $admin->nama = $row["nama"];
+            $admin->password = str_random(8);
+            $admin->remember_token = str_random(10);
             $admin->save();    
+            }
         }
         return "Data Berhasil Masuk";
     }
@@ -79,12 +96,9 @@ class GuzzleController extends Controller
             $proses->id_proses = null;
             else 
             $proses->id_proses = $row["id_proses"];
-            $cek = $proses->id_proses;
-            $hasilcek = DB::table('proses')
-                        ->where('id_proses','=', $cek)
-                        ->count(); 
-            if($hasilcek>0)
-            echo "<script>alert('ID Proses Sudah Digunakan');history.go(-1) </script>";
+            $cek = Proses::where('id_proses',$proses->id_proses )->count();
+            if($cek>0)
+            echo "<script>alert('Id Proses Sudah Terupdate');</script>";
             else{
             $proses->nrp = $row["nrp"];
             if($row["id_pengajuan"] != 0)
@@ -95,13 +109,13 @@ class GuzzleController extends Controller
             $proses->estimasi = null;
             else
             $proses->estimasi = $row["estimasi"]; 
-            $terms = $proses->id_surat;
-            $nama_surat = Surat::where('id_surat', $terms)->value('jenis_surat');
+            $nama_surat = Surat::where('id_surat', $proses->id_surat)->value('jenis_surat');
             $proses->jenis_surat = $nama_surat;
-            $proses->email = null;
+            $nama_email = Mahasiswa::where('nrp', $proses->nrp)->value('email');
+            $proses->email = $nama_email;
             $proses->save();
-            };
-        };
+            }
+        }
         return "Data Berhasil Masuk";
     }
 }

@@ -19,7 +19,8 @@ class Proses extends Model
     public function surat(){
         return $this->hasOne(Surat::class,'id_surat');
     }
-
-    protected $primaryKey = 'id_proses';
+    public function mahasiswa(){
+        return $this->belongsTo(Mahasiswa::class,'nrp');
+    }
 }
 

@@ -15,13 +15,14 @@ class CreateProsesTable extends Migration
     {
         Schema::create('proses', function (Blueprint $table) {
             $table->bigIncrements('id_proses');
-            $table->unsignedBigInteger('id_surat')->nullable(true);
+            $table->unsignedBigInteger('id_surat')->nullable();
             $table->foreign('id_surat')->references('id_surat')->on('surats')->onDelete('cascade');
-            $table->string('nrp');
-            $table->date('estimasi')->nullable(true);
-            $table->enum('status', array('Pending','Diterima','Ditolak','Sudah Di tanda tangani','Bisa Diambil','Telah Diambil','Surat Ditolak'))->default('Pending');
-            $table->string('jenis_surat')->nullable(true);
-            $table->string('email')->nullable(true);
+            $table->string('nrp')->nullable();
+            $table->foreign('nrp')->references('nrp')->on('mahasiswas')->onDelete('cascade');
+            $table->date('estimasi')->nullable();
+            $table->enum('status', array('Proses','Batal','Selesai'))->default('Proses');
+            $table->string('jenis_surat')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }
