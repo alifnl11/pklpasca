@@ -249,7 +249,7 @@ desired effect
             <div class="col-md-6">
               <form action="/search" method="get">
                 <div class="input-group">
-                  <input type="search" class="form-control" name="search" autocomplete="off" autofocus>
+                  <input type="search" class="form-control" name="search" autocomplete="off" autofocus style="margin-top: 60px;">
                   <span class="input-group-prepend">
                     <button type="submit" class="btn btn-primary">Search</button>
                   </span>
@@ -272,10 +272,11 @@ desired effect
             </div>
             @endif
             
-            <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
+            <div class="row"><div class="col-sm-12"><table id="example1" style="margin-top: 15px;" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
                 <thead>
                 <tr role="row">
                 <th style="width: 65px;">ID Pelayanan Loket</th>
+                <th style="width: 65px;">Nomor Surat</th>
                 <th style="width: 100px;">Jenis Surat</th>
                 <th style="width: 154px;">Jenis Surat Pelayanan SPs</th>
                 <th style="width: 100px;">Surat Pelayanan Lainnya</th>
@@ -288,13 +289,14 @@ desired effect
                 <th style="width: 65px;">Tujuan Surat Keluar Lainnya</th>
                 <th style="width: 65px;">Pengirim Surat Keluar</th>
                 <th style="width: 65px;">Keterangan Pengirim Surat Keluar</th>
-                <th style="width: 65px;">Nomor Surat</th>
                 <th style="width: 65px;">Berkas</th>
+                <th style="width: 65px;">Aksi</th>
                 </thead>
                 <tbody>
                 @foreach($list as $arsip)       
                     <tr role="row" class="odd">
                     <td>{{ $arsip->id_loket}}</td>
+                    <td>{{ $arsip->id }}</td>
                     <td style="text-align:center;">{{  $arsip->jenis_surat}}</td>
                     <td>{{ $arsip->surat_pelayanan_sps}}</td>
                     <td>{{ $arsip->surat_pelayanan_lainnya}}</td>
@@ -307,9 +309,8 @@ desired effect
                     <td>{{ $arsip->tujuan_surat_keluar_lainnya}}</td>
                     <td>{{ $arsip->pengirim_Surat_Keluar}}</td>
                     <td>{{ $arsip->keterangan_pengirim_surat_keluar}}</td>
-                    <td>{{ $arsip->nomor_surat }}</td>
                     <td>{{ $arsip->file}}</td>
-                    
+                    <td><a href="{{ route('arsip.edit',['id'=>$arsip->id]) }}" class="btn btn-warning btn-sm">Edit</a></td>
                     </tr>
                     @endforeach         
                             

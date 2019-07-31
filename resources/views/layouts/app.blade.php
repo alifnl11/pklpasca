@@ -112,18 +112,13 @@ desired effect
                         <img src="images/profile.png" class="img-circle" alt="User Image">
                     </li>
                     <!-- Menu Footer-->
-                    <!-- <li class="user-footer">
+                    <li class="user-footer">
                         <div class="pull-right">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('login') }}">
                             {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                            </form>
                         </div>
-                    </li> -->
+                    </li>
                     </ul>
                 </li>
                 </ul>
@@ -171,9 +166,9 @@ desired effect
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="adminloket"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
-                    <li><a href="adminTTDpimpinan"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
-                    <li><a href="adminPermohonanSurat"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
+                    <li><a href="/"><i class="far fa-circle"></i>&nbsp Admin Loket</a></li>
+                    <li><a href="adminttd"><i class="far fa-circle"></i>&nbsp Admin TTD Pimpinan</a></li>
+                    <li><a href="adminpermohonansurat"><i class="far fa-circle"></i>&nbsp Admin Penomoran Surat</a></li>
                 </ul>
                 </li>
                 <li class="treeview">
@@ -196,8 +191,7 @@ desired effect
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengajuan</a></li>
-                    <li><a href="pages/forms/general.html"><i class="far fa-circle"></i>&nbsp Surat Pengambilan</a></li>
+                    <li><a href="histori"><i class="far fa-circle"></i>&nbsp Surat</a></li>
                 </ul>
                 </li>
             </ul>

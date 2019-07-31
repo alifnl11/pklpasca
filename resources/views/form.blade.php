@@ -75,7 +75,7 @@ desired effect
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
+    <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
@@ -238,12 +238,13 @@ desired effect
         <p>{{ \Session::get('success') }}</p>
     </div>
     @endif
+    
     <form method="post" action="arsip/store" >
     {{csrf_field()}}
     <fieldset>
         <div class="form-group">
           <label class="col-form-label" for="inputDefault">ID_Pelayanan Loket</label>
-          <input type="text" name="id_loket" class="form-control" placeholder="" id="inputDefault">
+          <input type="text" name="id_loket" class="form-control-md-8" placeholder="" id="inputDefault" autocomplete="off" autofocus>
         </div>
         <fieldset class="form-group">
         <label>Jenis Surat</label>
@@ -344,12 +345,12 @@ desired effect
 
         <div class="form-group" id="suratpelayananlainnya" style="display:none;">
         <label class="col-form-label" for="inputDefault">Surat Pelayanan Lainnya</label>
-        <input type="text" name="surat_pelayanan_lainnya" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="surat_pelayanan_lainnya" class="form-control" placeholder="" id="inputDefault" autocomplete="off">
         </div>
 
         <div class="form-group" id="rincianjenissurat">
         <label class="col-form-label" for="inputDefault">Rincian Jenis Surat</label>
-        <input type="text" name="rincian_jenis_surat" class="form-control" placeholder="" >
+        <input type="text" name="rincian_jenis_surat" class="form-control" placeholder="" autocomplete="off" >
         </div>
 
              
@@ -395,7 +396,7 @@ desired effect
         <div class="form-group" id="nrp" style="display:none;">
         <label>Data Mahasiswa</label>
         <label class="col-form-label" for="inputDefault">NRP</label>
-        <input type="text" name="nrp" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="nrp" class="form-control" placeholder="" id="inputDefault" autocomplete="off">
         </div>
 
         <div class="form-group">
@@ -447,7 +448,7 @@ desired effect
 
         <div class="form-group">
         <label class="col-form-label" for="inputDefault">Tujuan Surat Keluar Lainnya</label>
-        <input type="text" name="tujuan_surat_keluar_lainnya" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="tujuan_surat_keluar_lainnya" class="form-control" placeholder="" id="inputDefault" autocomplete="off">
         </div>
 
         <div class="form-group">
@@ -488,7 +489,7 @@ desired effect
         </div>
         <div class="form-check">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="wakildekansps" value="wAKIL Dekan SPs">
+            <input type="radio" class="form-check-input" name="pengirim_Surat_Keluar" id="wakildekansps" value="Wakil Dekan SPs">
             Wakil Dekan SPs
             </label>
         </div>
@@ -526,7 +527,7 @@ desired effect
 
         <div class="form-group" id="pengirimlain" style="display:none;">
         <label class="col-form-label" for="inputDefault">Keterangan Pengirim Surat Keluar</label>
-        <input type="text" name="keterangan_pengirim_surat_keluar" class="form-control" placeholder="" id="inputDefault">
+        <input type="text" name="keterangan_pengirim_surat_keluar" class="form-control" placeholder="" id="inputDefault" autocomplete="off">
         </div>
 
         <div class="form-group">
