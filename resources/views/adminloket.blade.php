@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Pengajuan Surat 
+        Daftar Pengajuan Surat - Admin Loket 
       </h1>
     </section>
 
@@ -46,7 +46,7 @@
                       <td>{{ $surat->estimasii}}</td>
                       <td>{{ $surat->jenis_suratt}}</td>
                       <td>{{ $surat->statuss}}</td>
-                      <td><a href="{{ route('coba.status',['id_prosess'=>$surat->id_prosess,'statuss'=>$surat->statuss]) }}" class="btn btn-warning btn-sm">Selesai</a></td>
+                      <td><a href="{{ route('coba.status',['id_prosess'=>$surat->id_prosess,'statuss'=>$surat->statuss]) }}" class="btn btn-warning btn-sm">Diterima</a></td>
                       </tr>
                      @endif
                     @endforeach
