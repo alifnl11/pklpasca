@@ -17,6 +17,7 @@
           
           <div class="box border-top-solid">
               <!-- /.box-header -->
+              <div class="box-body table-responsive">
               <div class="table table-hover">
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
                 <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
@@ -72,6 +73,7 @@
               </div></div></div></div>
               </div>
               <!-- /.box-body -->
+          </div>
           </div>
           <!-- /.box -->
           </section>  

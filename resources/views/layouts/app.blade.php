@@ -7,6 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sistem Persuratan</title>
+  <link rel="icon" type="image/png" href="images/mini_logo.png"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -98,29 +99,7 @@ desired effect
                     </ul>
                 </li> 
                 <!-- User Account Menu -->
-                <li class="dropdown user user-menu">
-                    <!-- Menu Toggle Button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <!-- The user image in the navbar-->
-                    <img src="images/profile.png" class="user-image" alt="User Image">
-                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs">Admin Penyuratan</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                    <!-- The user image in the menu -->
-                    <li class="user-header">
-                        <img src="images/profile.png" class="img-circle" alt="User Image">
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                        <div class="pull-right">
-                            <a class="dropdown-item" href="{{ route('login') }}">
-                            {{ __('Logout') }}
-                            </a>
-                        </div>
-                    </li>
-                    </ul>
-                </li>
+                @include('layouts.user')
                 </ul>
             </div>
             </nav>
@@ -137,7 +116,7 @@ desired effect
                 <img src="images/profile.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-               
+                <p>Admin Penyuratan</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
