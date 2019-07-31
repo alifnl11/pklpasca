@@ -39,18 +39,39 @@
                             
                             
                     @foreach($status as $surat)
-                     @if($surat->statuss == 'Pending')       
+                     @if($surat->status == 'Pending')       
                       <tr role="row" class="odd">
+<<<<<<< HEAD
                       <td style="text-align:center;">{{  $surat->id_prosess}}</td>
                       <td>{{ $surat->nrpp}}</td>
                       <td>{{ $surat->estimasii}}</td>
                       <td>{{ $surat->jenis_suratt}}</td>
                       <td>{{ $surat->statuss}}</td>
                       <td><a href="{{ route('coba.status',['id_prosess'=>$surat->id_prosess,'statuss'=>$surat->statuss]) }}" class="btn btn-warning btn-sm">Diterima</a></td>
+=======
+                      <td style="text-align:center;">{{  $surat->id_proses}}</td>
+                      <td>{{ $surat->nrp}}</td>
+                      <td>{{ $surat->estimasi}}</td>
+                      <td>{{ $surat->jenis_surat}}</td>
+                      <td>{{ $surat->status}}</td>
+                      <td><a href="{{ route('coba.status',['id_proses'=>$surat->id_proses,'status'=>$surat->status]) }}" class="btn btn-warning btn-sm">Selesai</a></td>
+>>>>>>> 6f01e8f4d00f4b32a9e3a0b636f7adff0b110761
                       </tr>
                      @endif
                     @endforeach
                     
+                    @foreach($status as $surat)
+                       @if($surat->status == 'Bisa Diambil')       
+                        <tr role="row" class="odd">
+                        <td style="text-align:center;">{{  $surat->id_proses}}</td>
+                        <td>{{ $surat->nrp}}</td>
+                        <td>{{ $surat->estimasi}}</td>
+                        <td>{{ $surat->jenis_surat}}</td>
+                        <td>{{ $surat->status}}</td>
+                        <td><a href="{{ route('selesai.status',['id_proses'=>$surat->id_proses,'status'=>$surat->status]) }}" class="btn btn-success btn-sm">Done</a></td>
+                        </tr>
+                       @endif
+                      @endforeach
                 </tbody>
             
             </table></div></div>

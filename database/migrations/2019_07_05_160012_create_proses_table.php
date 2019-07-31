@@ -19,7 +19,7 @@ class CreateProsesTable extends Migration
             $table->foreign('id_surat')->references('id_surat')->on('surats')->onDelete('cascade');
             $table->string('nrp');
             $table->date('estimasi')->nullable(true);
-            $table->enum('status', array('Proses','Batal','Selesai'))->default('Proses');
+            $table->enum('status', array('Pending','Diterima','Ditolak','Sudah Di tanda tangani','Bisa Diambil','Telah Diambil','Surat Ditolak'))->default('Pending');
             $table->string('jenis_surat')->nullable(true);
             $table->string('email')->nullable(true);
             $table->timestamps();

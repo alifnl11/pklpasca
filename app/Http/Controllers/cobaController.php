@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Track;
+use App\Proses;
 use Illuminate\Support\Facades\Mail;
+
 class cobaController extends Controller
 {
     public function status() {
-        $status = Track::all();
+        $status = Proses::all();
         return view('adminloket',['status' => $status]);
     }
     
-    public function changeStatus($id_prosess, $statuss)
+    public function changeStatus($id_proses, $status)
     {
-    $coba = Track::findOrFail($id_prosess);
-    $coba->statuss = 'Diterima';
+    $coba = Proses::findOrFail($id_proses);
+    $coba->status = 'Diterima';
     $coba->save();
 
-    $alamat_email= $coba->alamat_email;
+    $email= $coba->email;
     $email_body= 'status surat DITERIMA';
 
     $data=array(
@@ -26,8 +27,8 @@ class cobaController extends Controller
         'email_body' => $email_body
       );
 
-      Mail::send('layouts.email-template',$data,function($mail)use($alamat_email){
-        $mail->to($alamat_email,'no-reply')
+      Mail::send('layouts.email-template',$data,function($mail)use($email){
+        $mail->to($email,'no-reply')
           ->subject("(Update) Data Surat");
         $mail->from('noreply.trackingsuratspsipb@gmail.com','Update Tracking');
  
@@ -40,12 +41,12 @@ class cobaController extends Controller
 
     public function search(Request $request) {
         $search = $request->get('search');
-        $list = DB::table('cobas') 
-            ->Where('id_prosess', 'like', '%'.$search.'%')
-            ->orwhere('nrpp', 'like', '%'.$search.'%')
-            ->orWhere('estimasii', 'like', '%'.$search.'%')
-            ->orWhere('jenis_suratt', 'like', '%'.$search.'%')
-            ->orderBy('id_prosess', 'desc')
+        $list = DB::table('proses') 
+            ->Where('id_proses', 'like', '%'.$search.'%')
+            ->orwhere('nrp', 'like', '%'.$search.'%')
+            ->orWhere('estimasi', 'like', '%'.$search.'%')
+            ->orWhere('jenis_surat', 'like', '%'.$search.'%')
+            ->orderBy('id_proses', 'desc')
             ->paginate(5)->onEachSide(2);
         return view('admin', ['list' => $list]);
     }
