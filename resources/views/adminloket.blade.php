@@ -20,9 +20,11 @@
             <div class="table table-hover">
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
               <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
-              <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-              <button type="submit"><i class="fa fa-search"></i></button>
-              </div>
+              <form action="/searchloket" method="get">
+                <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+                <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </form>
               </div>
             </div>
             <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
@@ -41,21 +43,12 @@
                     @foreach($status as $surat)
                      @if($surat->status == 'Pending')       
                       <tr role="row" class="odd">
-<<<<<<< HEAD
-                      <td style="text-align:center;">{{  $surat->id_prosess}}</td>
-                      <td>{{ $surat->nrpp}}</td>
-                      <td>{{ $surat->estimasii}}</td>
-                      <td>{{ $surat->jenis_suratt}}</td>
-                      <td>{{ $surat->statuss}}</td>
-                      <td><a href="{{ route('coba.status',['id_prosess'=>$surat->id_prosess,'statuss'=>$surat->statuss]) }}" class="btn btn-warning btn-sm">Diterima</a></td>
-=======
                       <td style="text-align:center;">{{  $surat->id_proses}}</td>
                       <td>{{ $surat->nrp}}</td>
                       <td>{{ $surat->estimasi}}</td>
                       <td>{{ $surat->jenis_surat}}</td>
                       <td>{{ $surat->status}}</td>
                       <td><a href="{{ route('coba.status',['id_proses'=>$surat->id_proses,'status'=>$surat->status]) }}" class="btn btn-warning btn-sm">Selesai</a></td>
->>>>>>> 6f01e8f4d00f4b32a9e3a0b636f7adff0b110761
                       </tr>
                      @endif
                     @endforeach

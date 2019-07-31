@@ -19,7 +19,7 @@ class penolakanController extends Controller
     $coba->status = 'Surat Ditolak';
     $coba->save();
     $email= $coba->email;
-    $email_body= 'surat annda DITOLAK';
+    $email_body= 'surat anda DITOLAK';
 
     $data=array(
         'nama_pengirim'=> $coba->nama_pengirim,

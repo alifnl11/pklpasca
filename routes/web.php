@@ -54,3 +54,10 @@ Route::get('adminpermohonansurat','penomoranController@status')->name('penomoran
 Route::get('/penomoran/{id_proses}/status/{status}', 'penomoranController@changeStatus')->name('penomoran.status');
 Route::get('/selesai/{id_proses}/status/{status}', 'selesaiController@changeStatus')->name('selesai.status');
 Route::get('histori','historiController@status')->name('histori');
+Route::get('/searchloket','cobaController@search');
+
+Route::get('/user', function () {
+    return view('welcome');
+});
+
+Route::get('/resi','ResiController@index');

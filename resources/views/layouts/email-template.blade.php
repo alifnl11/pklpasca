@@ -78,7 +78,7 @@ a[x-apple-data-detectors] {
                   <td width="600" valign="top" align="center" style="padding:0;Margin:0;">
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;">
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="padding:0;Margin:0;"> <img class="adapt-img" src="gambargambar/53351564246940781.png" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" alt="Gift " width="300"></td>
+                      <td align="center" style="padding:0;Margin:0;"> <img class="adapt-img" src="images/mail.sending.png" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" alt="Gift " width="300"></td>
                      </tr>
                    </table> </td>
                  </tr>

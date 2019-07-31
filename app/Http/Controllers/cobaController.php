@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proses;
+use DB;
 use Illuminate\Support\Facades\Mail;
 
 class cobaController extends Controller
@@ -15,13 +16,16 @@ class cobaController extends Controller
     
     public function changeStatus($id_proses, $status)
     {
+
     $coba = Proses::findOrFail($id_proses);
     $coba->status = 'Diterima';
     $coba->save();
-
+    
     $email= $coba->email;
     $email_body= 'status surat DITERIMA';
-
+    $waktu=$coba->updated_at;
+    $diterima= (string)$waktu.' '.$email_body;
+    $coba->desc_diterima = $diterima;
     $data=array(
         'nama_pengirim'=> $coba->nama_pengirim,
         'email_body' => $email_body
@@ -38,16 +42,15 @@ class cobaController extends Controller
       }
       return redirect()->route('coba')->with('sukses','Data berhasil di update');
     }
-
+     
     public function search(Request $request) {
         $search = $request->get('search');
-        $list = DB::table('proses') 
+        $status = DB::table('proses') 
             ->Where('id_proses', 'like', '%'.$search.'%')
             ->orwhere('nrp', 'like', '%'.$search.'%')
             ->orWhere('estimasi', 'like', '%'.$search.'%')
             ->orWhere('jenis_surat', 'like', '%'.$search.'%')
-            ->orderBy('id_proses', 'desc')
             ->paginate(5)->onEachSide(2);
-        return view('admin', ['list' => $list]);
+        return view('adminloket', ['status' => $status]);
     }
 }

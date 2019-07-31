@@ -22,6 +22,8 @@ class CreateProsesTable extends Migration
             $table->enum('status', array('Pending','Diterima','Ditolak','Sudah Di tanda tangani','Bisa Diambil','Telah Diambil','Surat Ditolak'))->default('Pending');
             $table->string('jenis_surat')->nullable(true);
             $table->string('email')->nullable(true);
+            $table->string('desc_diterima')->nullable(true);
+            $table->string('desc_ttd')->nullable(true);
             $table->timestamps();
         });
     }
