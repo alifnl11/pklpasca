@@ -100,6 +100,9 @@ class GuzzleController extends Controller
             if($cek>0)
             echo "<script>alert('Id Proses Sudah Terupdate');</script>";
             else{
+            if ($row["nrp"] == '')
+            $proses->nrp = null;
+            else
             $proses->nrp = $row["nrp"];
             if($row["id_pengajuan"] != 0)
             $proses->id_surat = $row["id_pengajuan"];

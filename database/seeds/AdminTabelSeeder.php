@@ -14,7 +14,6 @@ class AdminTabelSeeder extends Seeder
     {
         Admin::create([
             'username'         =>       'admin',
-            'id_proses'        =>        null,
             'jenis_admin'      =>       'Admin Loket',
             'status_admin'     =>       'online',
             'nama'             =>       'Basyirun',
