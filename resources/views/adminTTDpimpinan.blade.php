@@ -6,7 +6,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Daftar Pengajuan Surat 
+      Daftar Pengajuan Surat - Admin Tanda Tangan Pimpinan
     </h1>
   </section>
 
