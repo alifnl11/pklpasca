@@ -13,11 +13,14 @@ class Proses extends Model
         'estimasi',
         'status',
         'jenis_surat',
-        // 'email'
+        'email'
     ];
 
     public function surat(){
         return $this->hasOne(Surat::class,'id_surat');
+    }
+    public function mahasiswa(){
+        return $this->belongsTo(Mahasiswa::class,'nrp');
     }
 }
 

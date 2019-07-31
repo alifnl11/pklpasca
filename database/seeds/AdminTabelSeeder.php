@@ -17,7 +17,7 @@ class AdminTabelSeeder extends Seeder
             'id_proses'        =>        null,
             'jenis_admin'      =>       'Admin Loket',
             'status_admin'     =>       'online',
-            'name'             =>       'Basyirun',
+            'nama'             =>       'Basyirun',
             'email'            =>       'admin@admin.com',
             'password'         =>       Hash::make('admin'),
             'remember_token'   =>       str_random(10),
