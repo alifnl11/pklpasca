@@ -6,7 +6,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Daftar Pengajuan Surat 
+      Daftar Pengajuan Surat - Admin Tanda Tangan Pimpinan
     </h1>
   </section>
 
@@ -17,14 +17,15 @@
         
         <div class="box border-top-solid">
             <!-- /.box-header -->
+            <div class="box-body table-responsive">
             <div class="table table-hover">
-            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
-              <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
-              <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6">
+                <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6">
+                <div id="example1_filter" class="dataTables_filter" style=" float: right; padding-right: 20px; position: relative;"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+                <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+                </div>
               </div>
-              </div>
-            </div>
             <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped  dataTable no-footer" role="grid" aria-describedby="example1_info">
                 <thead>
                 <tr role="row">
@@ -65,6 +66,7 @@
             </div></div></div></div>
             </div>
             <!-- /.box-body -->
+        </div>
         </div>
         <!-- /.box -->
         </section>  
