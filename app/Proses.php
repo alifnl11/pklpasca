@@ -22,5 +22,6 @@ class Proses extends Model
     public function mahasiswa(){
         return $this->belongsTo(Mahasiswa::class,'nrp');
     }
+    protected $primaryKey = 'id_proses';
 }
 

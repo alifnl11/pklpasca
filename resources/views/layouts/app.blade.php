@@ -7,11 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sistem Persuratan</title>
-<<<<<<< HEAD
   <link rel="icon" href="{{ asset('vendor/safario/img/ipbicon.png')}}" type="image/png">
-=======
   <link rel="icon" type="image/png" href="images/mini_logo.png"/>
->>>>>>> 5f9bcde116d1c21fe638472ecec227fc701b5c8a
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -162,7 +159,7 @@ desired effect
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="arsip"><i class="far fa-circle"></i>Input Arsip</a></li>
+                    <li><a href="arsip"><i class="far fa-circle"></i> Input Arsip</a></li>
                     <li><a href="list"><i class="far fa-circle"></i> Daftar Arsip </a></li>
                 </ul>
 

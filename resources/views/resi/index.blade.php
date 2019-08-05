@@ -71,19 +71,19 @@
               {{csrf_field()}}
                 <thead>
                   <tr>
-                    <th>ID Register</th>
-                    <th>NRP</th>
-                    <th>Jenis Surat</th>
-                    <th>Status Surat</th>
+                    <th style="color:#696969">ID Register</th>
+                    <th style="color:#696969">NRP</th>
+                    <th style="color:#696969">Jenis Surat</th>
+                    <th style="color:#696969">Status Surat</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($data_surat as $surat)
                     <tr>
-                      <td>{{$surat->id_proses}}</td>
-                      <td>{{$surat->nrp}}</td>
-                      <td>{{$surat->jenis_surat}}</td>
-                      <td>{{$surat->status}}</td>
+                      <td style="color:#333333">{{$surat->id_proses}}</td>
+                      <td style="color:#333333">{{$surat->nrp}}</td>
+                      <td style="color:#333333">{{$surat->jenis_surat}}</td>
+                      <td style="color:#333333">{{$surat->status}}</td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -93,15 +93,15 @@
               {{csrf_field()}}
                 <thead>
                   <tr>
-                    <th>History Process</th>
+                    <th style="color:#696969">History Process</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($data_surat as $surat)
                     <tr>
-                    <td>[SURAT MASUK] {{$surat->created_at}}</td> </tr>  
+                    <td style="color:#333333">[SURAT MASUK] {{$surat->created_at}}</td> </tr>  
                     <tr>
-                    <td>[MENUNGGU DI TANDA TANGANI] {{$surat->updated_at}}</td>
+                    <td style="color:#333333">[MENUNGGU DI TANDA TANGANI] {{$surat->updated_at}}</td>
                     </tr>
                   @endforeach
                 </tbody>

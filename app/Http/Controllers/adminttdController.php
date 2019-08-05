@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class adminttdController extends Controller
 {
     public function status() {
-        $status = Proses::paginate(5);
+        $status = Proses::all();
         return view('adminTTDpimpinan',['status' => $status]);
     }
     

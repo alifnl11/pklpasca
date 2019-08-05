@@ -22,7 +22,7 @@ class cobaController extends Controller
     $coba->save();
     
     $email= $coba->email;
-    $email_body= 'status surat DITERIMA';
+    $email_body= 'surat sedang menunggu persetujuan pimpinan';
     $waktu=$coba->updated_at;
     $diterima= (string)$waktu.' '.$email_body;
     $coba->desc_diterima = $diterima;
