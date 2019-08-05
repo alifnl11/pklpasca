@@ -84,34 +84,43 @@ class GuzzleController extends Controller
     }
 
     public function getDataProses(){
-        $client = new CLient();
-        $request = $client->get('http://pelayananpasca.ipb.ac.id/antrian/api/web/v1/proses');
-        $response = $request->getBody()->getContents();   
+        for($i=1; $i<=12; $i++){
+            $client = new CLient();
+            $request = $client->get('http://pelayananpasca.ipb.ac.id/antrian/api/web/v1/proses/'.$i);
+            $response = $request->getBody()->getContents();   
+            
+            $data = json_decode($response, true);
         
-        $data = json_decode($response, true);
-    
-        foreach($data as $row){
             $proses = new Proses();
-            if($row["id_proses"] == '')
+            if($data["id_proses"] == '')
             $proses->id_proses = null;
             else 
-            $proses->id_proses = $row["id_proses"];
+            $proses->id_proses = $data["id_proses"];
             $cek = Proses::where('id_proses',$proses->id_proses )->count();
             if($cek>0)
             echo "<script>alert('Id Proses Sudah Terupdate');</script>";
             else{
+<<<<<<< HEAD
             if ($row["nrp"] == '')
             $proses->nrp = null;
             else
             $proses->nrp = $row["nrp"];
             if($row["id_pengajuan"] != 0)
             $proses->id_surat = $row["id_pengajuan"];
+=======
+            if($data["nrp"] == '')
+            $proses->nrp = null;
+            else
+            $proses->nrp = $data["nrp"];
+            if($data["id_pengajuan"] != 0)
+            $proses->id_surat = $data["id_pengajuan"];
+>>>>>>> 9a15b13824e026be203cd70405cf0ae0e2d4f83a
             else 
             $proses->id_surat = null;
-            if($row["estimasi"] == 0)
+            if($data["estimasi"] == 0)
             $proses->estimasi = null;
             else
-            $proses->estimasi = $row["estimasi"]; 
+            $proses->estimasi = $data["estimasi"]; 
             $nama_surat = Surat::where('id_surat', $proses->id_surat)->value('jenis_surat');
             $proses->jenis_surat = $nama_surat;
             $nama_email = Mahasiswa::where('nrp', $proses->nrp)->value('email');
